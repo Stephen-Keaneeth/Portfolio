@@ -1,0 +1,46 @@
+[
+  {
+    "id": "google-data-analytics",
+    "title": "Google Data Analytics Certificate",
+    "issuer": "Google / Coursera",
+    "issuerEmoji": "🎓",
+    "date": "2026-01",
+    "status": "In Progress",
+    "description": "8-course professional certificate covering data cleaning, analysis, and visualization using R, Tableau, and spreadsheets.",
+    "link": "",
+    "skills": ["R", "SQL", "Tableau", "Data Analysis"]
+  },
+  {
+    "id": "cisco-intro-networking",
+    "title": "Introduction to Networking",
+    "issuer": "Cisco Networking Academy",
+    "issuerEmoji": "🌐",
+    "date": "2025-11",
+    "status": "Completed",
+    "description": "Fundamentals of networking: OSI model, IP addressing, subnetting, routing, and switching concepts.",
+    "link": "",
+    "skills": ["Networking", "TCP/IP", "Subnetting"]
+  },
+  {
+    "id": "kaggle-pandas",
+    "title": "Pandas — Data Manipulation",
+    "issuer": "Kaggle",
+    "issuerEmoji": "🏆",
+    "date": "2025-10",
+    "status": "Completed",
+    "description": "Micro-course covering DataFrame manipulation, groupby, merge, and data cleaning with Pandas.",
+    "link": "https://www.kaggle.com/learn/pandas",
+    "skills": ["Python", "Pandas", "Data Cleaning"]
+  },
+  {
+    "id": "kaggle-ml-intro",
+    "title": "Intro to Machine Learning",
+    "issuer": "Kaggle",
+    "issuerEmoji": "🏆",
+    "date": "2025-09",
+    "status": "Completed",
+    "description": "Fundamental machine learning concepts including decision trees, model validation, and overfitting/underfitting.",
+    "link": "https://www.kaggle.com/learn/intro-to-machine-learning",
+    "skills": ["Python", "Scikit-learn", "ML"]
+  }
+]

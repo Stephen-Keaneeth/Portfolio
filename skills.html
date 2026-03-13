@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Skills and technologies — Stephen's CS student portfolio. Python, ML, Networking, and more." />
+  <title>Skills — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/secondary.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="page-content skills-page">
+
+    <section class="section" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-chip">My Stack</span>
+          <h1 id="skills-heading">Skills &amp; Technologies</h1>
+          <p>A snapshot of my current skill set as a 1st-year CS student — honest levels, not inflated.</p>
+        </div>
+
+        <!-- Tech icon grid (visual glance) -->
+        <div class="tech-grid reveal-group" id="tech-grid"></div>
+
+        <hr class="divider" />
+
+        <!-- Skill progress bars by category -->
+        <div id="skills-categories" class="reveal-group"></div>
+
+        <!-- Honest note about skill levels -->
+        <div class="card reveal" style="margin-top:var(--space-8);border-color:var(--accent);border-style:dashed">
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);margin:0;max-width:none">
+            <strong style="color:var(--text-primary)">About these levels:</strong>
+            I rate myself honestly. "Proficient" means I can use it independently and debug my own issues.
+            "Learning" means I understand the basics but still regularly reference documentation.
+            "Exploring" means I've done a tutorial or two and am actively experimenting.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res  = await fetch('/data/skills.json');
+        const data = await res.json();
+
+        // ── Tech icon grid ──
+        const techGrid = document.getElementById('tech-grid');
+        data.techIcons.forEach(({ name, emoji }) => {
+          techGrid.innerHTML += `
+            <div class="tech-item reveal">
+              <span class="tech-item__icon" aria-hidden="true">${emoji}</span>
+              <span class="tech-item__name">${name}</span>
+            </div>`;
+        });
+
+        // ── Skill category bars ──
+        const catsEl = document.getElementById('skills-categories');
+        data.categories.forEach(cat => {
+          const section = document.createElement('div');
+          section.className = 'skill-category reveal';
+          section.innerHTML = `
+            <div class="skill-category__title">
+              <span aria-hidden="true">${cat.icon}</span> ${cat.name}
+            </div>
+            ${cat.skills.map(skill => `
+              <div class="skill-item">
+                <div class="skill-item__header">
+                  <span class="skill-item__name">${skill.name}</span>
+                  <span class="skill-item__level">${skill.label}</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-level="${skill.level}"></div>
+                </div>
+              </div>
+            `).join('')}
+          `;
+          catsEl.appendChild(section);
+        });
+
+        // ── Animate skill bars on scroll ──
+        // We use IntersectionObserver to trigger once the element is visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const fill = entry.target;
+              fill.style.width = fill.dataset.level + '%';
+              observer.unobserve(fill);
+            }
+          });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.skill-bar__fill').forEach(bar => observer.observe(bar));
+
+      } catch (err) {
+        console.error('Could not load skills:', err);
+      }
+    });
+  </script>
+</body>
+</html>

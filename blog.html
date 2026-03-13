@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog / Learning Notes — Stephen's CS student portfolio." />
+  <title>Blog — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/secondary.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="page-content">
+
+    <section class="section--sm" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-chip">Writing</span>
+          <h1 id="blog-heading">Blog &amp; Learning Notes</h1>
+          <p>
+            Notes on what I'm studying, building, and figuring out — written in plain language,
+            not just for experts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section--sm" aria-label="Blog posts">
+      <div class="container">
+        <div class="blog-layout">
+
+          <!-- Post list -->
+          <div>
+            <div class="spinner" id="blog-loader"></div>
+            <div class="blog-post-list" id="blog-list"></div>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+
+            <!-- All Tags -->
+            <div class="blog-sidebar__card">
+              <div class="blog-sidebar__title">Topics</div>
+              <div class="blog-tag-cloud" id="blog-tags"></div>
+            </div>
+
+            <!-- About the blog -->
+            <div class="blog-sidebar__card">
+              <div class="blog-sidebar__title">About This Blog</div>
+              <p style="font-size:var(--text-sm);color:var(--text-secondary)">
+                These are learning notes — things I figured out, mistakes I made,
+                and concepts that finally clicked. Written honestly, for students
+                like me.
+              </p>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res   = await fetch('/data/blog.json');
+        const posts = await res.json();
+
+        const loader  = document.getElementById('blog-loader');
+        const listEl  = document.getElementById('blog-list');
+        const tagsEl  = document.getElementById('blog-tags');
+        loader.style.display = 'none';
+
+        // ── Collect all unique tags ──
+        const allTags = [...new Set(posts.flatMap(p => p.tags))];
+        allTags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'tag tag--muted';
+          span.textContent = tag;
+          span.style.cursor = 'pointer';
+          // Filter posts on click
+          span.addEventListener('click', () => {
+            document.querySelectorAll('.blog-card').forEach(card => {
+              const tags = card.dataset.tags.split(',');
+              card.style.display = tags.includes(tag) ? '' : 'none';
+            });
+            // Update active tag
+            document.querySelectorAll('.blog-tag-cloud .tag').forEach(t => t.classList.remove('active'));
+            span.classList.add('active');
+          });
+          tagsEl.appendChild(span);
+        });
+
+        // Add "All" tag
+        const allTag = document.createElement('span');
+        allTag.className = 'tag active';
+        allTag.textContent = 'All';
+        allTag.style.cursor = 'pointer';
+        allTag.addEventListener('click', () => {
+          document.querySelectorAll('.blog-card').forEach(c => c.style.display = '');
+          document.querySelectorAll('.blog-tag-cloud .tag').forEach(t => t.classList.remove('active'));
+          allTag.classList.add('active');
+        });
+        tagsEl.prepend(allTag);
+
+        // ── Render posts ──
+        posts.forEach(post => {
+          // Format date nicely: "2026-03-10" → "10 Mar 2026"
+          const dateObj = new Date(post.date + 'T00:00:00');
+          const dateStr = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+          const card = document.createElement('a');
+          card.className = 'blog-card reveal';
+          card.href = `/blog-post.html?id=${post.id}`;
+          card.dataset.tags = post.tags.join(',');
+          card.setAttribute('aria-label', `Read: ${post.title}`);
+
+          card.innerHTML = `
+            <div class="blog-card__date">${dateStr} &nbsp;·&nbsp; ${post.readingTime}</div>
+            <h3 class="blog-card__title">${post.title}</h3>
+            <p class="blog-card__excerpt">${post.excerpt}</p>
+            <div class="blog-card__footer">
+              <div class="tags">
+                ${post.tags.map(t => `<span class="tag tag--muted">${t}</span>`).join('')}
+              </div>
+              <span style="color:var(--accent);font-size:var(--text-sm);font-weight:600">Read →</span>
+            </div>
+          `;
+
+          listEl.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Could not load blog posts:', err);
+      }
+    });
+  </script>
+</body>
+</html>

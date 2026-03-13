@@ -1,0 +1,117 @@
+[
+  {
+    "id": "smart-health-ai",
+    "title": "Smart Health AI",
+    "tagline": "AI-powered preliminary symptom checker and health advisor",
+    "categories": [
+      "AI",
+      "Healthcare"
+    ],
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "Scikit-learn",
+      "Pandas"
+    ],
+    "emoji": "🏥",
+    "description": "A machine learning application that helps users get a preliminary understanding of their health symptoms. Built with Scikit-learn classification models and a clean Streamlit interface, the tool processes symptom inputs and returns probability-ranked condition suggestions along with health advice.\n\nThis was my first full end-to-end ML project — from data cleaning through model selection, evaluation, and deployment.",
+    "highlights": [
+      "Trained on a dataset of 4000+ symptom-disease pairs",
+      "Implemented 3 classifiers (Decision Tree, Random Forest, Naïve Bayes) and compared accuracy",
+      "Clean Streamlit UI deployable with zero configuration",
+      "Added confidence thresholds to avoid overconfident predictions"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Stephen-Keaneeth/smart-health-ai"
+    },
+    "date": "2026-03",
+    "featured": true
+  },
+  {
+    "id": "network-packet-analyzer",
+    "title": "Network Packet Analyzer",
+    "tagline": "Real-time packet capture and protocol inspection tool",
+    "categories": [
+      "Cybersecurity",
+      "Networking"
+    ],
+    "technologies": [
+      "Python",
+      "Scapy",
+      "Tkinter"
+    ],
+    "emoji": "🔍",
+    "description": "A desktop tool built with Scapy and Tkinter to capture live network packets, decode common protocols (TCP, UDP, ICMP, DNS, HTTP), and display them in a searchable real-time interface. Built while studying networking fundamentals.",
+    "highlights": [
+      "Captures live packets using raw sockets + Scapy",
+      "Decodes Ethernet, IP, TCP, UDP, ICMP and DNS layers",
+      "Filter packets by protocol, source/destination IP",
+      "Export captured sessions to .pcap for Wireshark"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Stephen-Keaneeth/packet-analyzer"
+    },
+    "date": "2026-02",
+    "featured": true
+  },
+  {
+    "id": "kaggle-titanic",
+    "title": "Titanic Survival Predictor",
+    "tagline": "Kaggle competition — top 15% leaderboard ranking",
+    "categories": [
+      "Data Science",
+      "ML"
+    ],
+    "technologies": [
+      "Python",
+      "Pandas",
+      "Seaborn",
+      "XGBoost",
+      "Jupyter"
+    ],
+    "emoji": "🚢",
+    "description": "My first Kaggle competition. Explored the Titanic dataset, performed feature engineering (family size, title extraction, age imputation), and trained an XGBoost model with cross-validation. Achieved ~0.80 accuracy placing in the top 15% of the leaderboard.",
+    "highlights": [
+      "Extensive EDA with Seaborn visualizations",
+      "Feature engineering: FamilySize, Title, IsAlone",
+      "XGBoost with hyperparameter tuning via GridSearchCV",
+      "0.802 accuracy — top 15% on public Kaggle leaderboard"
+    ],
+    "links": {
+      "live": "https://www.kaggle.com/stephen-keaneeth/titanic",
+      "github": "https://github.com/Stephen-Keaneeth/titanic"
+    },
+    "date": "2026-01",
+    "featured": true
+  },
+  {
+    "id": "dsa-visualizer",
+    "title": "DSA Algorithm Visualizer",
+    "tagline": "Interactive visual explanations of sorting and graph algorithms",
+    "categories": [
+      "Tools",
+      "Education"
+    ],
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "emoji": "📊",
+    "description": "A browser-based tool that animates common algorithms step by step. Built to help myself and classmates understand how Bubble Sort, Merge Sort, Binary Search, and BFS/DFS actually work under the hood. No external libraries — pure vanilla JS canvas animations.",
+    "highlights": [
+      "Visualizes Bubble, Selection, Insertion, Merge, Quick Sort",
+      "BFS and DFS on a grid with step-by-step playback",
+      "Speed control and custom array input",
+      "Zero dependencies — 100% vanilla HTML/CSS/JS"
+    ],
+    "links": {
+      "live": "https://stephen-keaneeth.github.io/dsa-visualizer",
+      "github": "https://github.com/Stephen-Keaneeth/dsa-visualizer"
+    },
+    "date": "2025-12",
+    "featured": false
+  }
+]

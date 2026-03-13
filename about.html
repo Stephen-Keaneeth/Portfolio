@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="About Stephen — 1st year Computer Science student with interests in AI, Data Science, and Cybersecurity." />
+  <meta property="og:title" content="About — Stephen" />
+  <meta property="og:description" content="1st year CS student. Builder. Curious by nature." />
+  <title>About — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/about.css" />
+</head>
+
+<body>
+
+  <div id="header"></div>
+
+  <main class="page-content">
+
+    <!-- ── About Hero ─────────────────────────────────────── -->
+    <section class="section about-hero" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-hero__inner">
+
+          <!-- Text side -->
+          <div>
+            <span class="section-chip">About Me</span>
+            <h1 id="about-heading" style="margin-bottom:var(--space-6)">
+              Hi, I'm <span class="gradient-text">Stephen</span>.
+            </h1>
+            <p class="about-hero__bio">
+              I'm a 1st-year Computer Science Engineering student with a strong interest in
+              <strong>Artificial Intelligence</strong>, <strong>Data Science</strong>, and
+              <strong>Cybersecurity</strong>. I love building projects that solve real problems —
+              from ML models that help people understand their health, to tools that explore
+              how networks actually work.
+            </p>
+            <p class="about-hero__bio">
+              I believe in learning by building. Every project I start is driven by genuine
+              curiosity — not just coursework. I document what I learn here so others can
+              benefit from my experience too.
+            </p>
+
+            <!-- Quick facts -->
+            <div class="tags" style="margin-bottom:var(--space-6)">
+              <span class="tag">📍 India</span>
+              <span class="tag">🎓 B.Tech CSE — 2nd Semester</span>
+              <span class="tag">🤝 Open to Internships</span>
+            </div>
+
+            <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+              <a href="#" class="btn btn-primary">
+                <!-- Update href to your actual resume link -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                Download Résumé
+              </a>
+              <a href="/contact.html" class="btn btn-ghost">Get In Touch</a>
+            </div>
+          </div>
+
+          <!-- Photo side -->
+          <div class="about-hero__image-wrapper">
+            <!--
+              OPTION A: If you have a profile photo, uncomment this and
+              replace the emoji placeholder below:
+              
+              <img src="/assets/images/profile.jpg" 
+                   alt="Stephen — profile photo" 
+                   class="about-hero__image" />
+            -->
+
+            <!-- OPTION B: Emoji avatar (placeholder until you have a photo) -->
+            <div class="about-hero__avatar" aria-hidden="true">🧑‍💻</div>
+
+            <a href="#" class="btn btn-ghost about-hero__resume-link" style="font-size:var(--text-sm)">
+              📄 View Résumé Online
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Education Timeline ─────────────────────────────── -->
+    <section class="section" aria-labelledby="education-heading">
+      <div class="container container--narrow">
+        <div class="section-header reveal">
+          <span class="section-chip">Education</span>
+          <h2 id="education-heading">Academic Journey</h2>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-item__date">2025 – Present</div>
+            <div class="timeline-item__title">B.Tech in Computer Science Engineering</div>
+            <div class="timeline-item__subtitle">
+              Geethangali College Of Engineering And Technology &mdash; Batch of 2029
+            </div>
+            <p style="font-size:var(--text-sm);color:var(--text-secondary)">
+              Currently in my 2nd semester. Key subjects: Programming in C, Engineering Mathematics,
+              Digital Logic Design, and Communication Skills in Technology.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-item__date">2023 – 2025</div>
+            <div class="timeline-item__title">Higher Secondary (Class 12 — Science Stream)</div>
+            <div class="timeline-item__subtitle">Narayana Junior College &mdash; State Board</div>
+            <p style="font-size:var(--text-sm);color:var(--text-secondary)">
+              Completed with Physics, Chemistry, and Mathematics. Developed early interest in
+              programming through self-study of C.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Interests ──────────────────────────────────────── -->
+    <section class="section--sm" aria-labelledby="interests-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-chip">Interests</span>
+          <h2 id="interests-heading">What Keeps Me Curious</h2>
+        </div>
+
+        <div class="interests-grid reveal-group">
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🤖</span>
+            <span class="interest-item__label">Machine Learning</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🔐</span>
+            <span class="interest-item__label">Cybersecurity</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">📊</span>
+            <span class="interest-item__label">Data Analysis</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🌐</span>
+            <span class="interest-item__label">Networking</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🧩</span>
+            <span class="interest-item__label">Algorithms</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">📖</span>
+            <span class="interest-item__label">Technical Writing</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🏆</span>
+            <span class="interest-item__label">Competitive Coding</span>
+          </div>
+          <div class="interest-item reveal">
+            <span class="interest-item__icon">🚀</span>
+            <span class="interest-item__label">Open Source</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What I'm building next ──────────────────────────── -->
+    <section class="section--sm" aria-labelledby="next-heading">
+      <div class="container container--narrow">
+        <div class="card reveal" style="border-color:var(--accent);border-style:dashed">
+          <span class="section-chip">What's Next</span>
+          <h2 id="next-heading" style="margin-bottom:var(--space-4);font-size:var(--text-2xl)">Goals for 2026</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--space-3)">
+            <li style="display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">
+              <span style="color:var(--accent)">✦</span> Land a summer internship in Data Science or Software
+              Development
+            </li>
+            <li style="display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">
+              <span style="color:var(--accent)">✦</span> Participate in my first hackathon and complete a team project
+            </li>
+            <li style="display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">
+              <span style="color:var(--accent)">✦</span> Complete the Google Data Analytics Professional Certificate
+            </li>
+            <li style="display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">
+              <span style="color:var(--accent)">✦</span> Solve 100+ LeetCode problems across arrays, trees, and graphs
+            </li>
+            <li style="display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">
+              <span style="color:var(--accent)">✦</span> Contribute a meaningful PR to an open-source project
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+</body>
+
+</html>

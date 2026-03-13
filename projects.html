@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projects by Stephen — AI, Cybersecurity, Data Science, and Tools built during my CS degree." />
+  <meta property="og:title"       content="Projects — Stephen" />
+  <meta property="og:description" content="AI, Data Science, and Cybersecurity projects." />
+  <title>Projects — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/projects.css" />
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <main class="page-content">
+
+    <!-- ── Page Header ──────────────────────────── -->
+    <section class="section projects-header" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-chip">Portfolio</span>
+          <h1 id="projects-heading" style="margin-bottom:var(--space-4)">Projects</h1>
+          <p style="font-size:var(--text-lg);max-width:600px">
+            Things I've built while learning — exploring AI, network security, data science,
+            and developer tools. Each project comes with notes on what I learned.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Filter Bar & Grid ─────────────────────── -->
+    <section class="section--sm" aria-label="Projects grid">
+      <div class="container">
+
+        <!-- Filter buttons — generated dynamically from project categories -->
+        <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter projects by category">
+          <!-- Buttons injected by JS -->
+        </div>
+
+        <!-- Loading skeleton -->
+        <div id="projects-loader" class="grid-auto">
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+
+        <!-- Project cards grid — populated by JS -->
+        <div class="projects-grid reveal-group" id="projects-grid" role="list"></div>
+
+        <!-- Empty state shown when filter returns nothing -->
+        <div class="empty-state" id="empty-state" hidden>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <p>No projects match this filter yet.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+
+      let allProjects = [];
+
+      // ── Fetch projects ──
+      try {
+        const res = await fetch('/data/projects.json');
+        allProjects = await res.json();
+      } catch (err) {
+        console.error('Could not load projects:', err);
+      }
+
+      const loader     = document.getElementById('projects-loader');
+      const grid       = document.getElementById('projects-grid');
+      const filterBar  = document.getElementById('filter-bar');
+      const emptyState = document.getElementById('empty-state');
+
+      // ── Build filter buttons from unique categories ──
+      const allCategories = ['All', ...new Set(allProjects.flatMap(p => p.categories))];
+
+      allCategories.forEach((cat, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+        btn.textContent = cat;
+        btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          filterProjects(cat);
+        });
+        filterBar.appendChild(btn);
+      });
+
+      // ── Render all project cards ──
+      loader.style.display = 'none';
+
+      allProjects.forEach(project => {
+        const card = document.createElement('article');
+        card.className = 'card project-card reveal';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('data-categories', project.categories.join(','));
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', project.title);
+
+        const navigate = () => window.location.href = `/project.html?id=${project.id}`;
+        card.addEventListener('click', navigate);
+        card.addEventListener('keydown', e => { if (e.key === 'Enter') navigate(); });
+
+        card.innerHTML = `
+          <div class="project-card__image-placeholder" aria-hidden="true">
+            <span style="font-size:3rem">${project.emoji || '💻'}</span>
+          </div>
+          <div class="project-card__meta">
+            <span style="font-family:var(--font-mono);font-size:var(--text-xs)">${project.date}</span>
+            <div class="tags">
+              ${project.categories.map(c => `<span class="tag tag--muted">${c}</span>`).join('')}
+            </div>
+          </div>
+          <h3 class="project-card__title">${project.title}</h3>
+          <p class="project-card__description">${project.tagline}</p>
+          <div class="project-card__footer">
+            <div class="tags">
+              ${project.technologies.slice(0,3).map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <span style="color:var(--accent);font-size:var(--text-sm);font-weight:600">View →</span>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // ── Filter function ──
+      function filterProjects(category) {
+        const cards = grid.querySelectorAll('.project-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const cats = card.dataset.categories.split(',');
+          const matches = category === 'All' || cats.includes(category);
+          card.classList.toggle('hidden', !matches);
+          if (matches) visibleCount++;
+        });
+
+        // Show/hide empty state
+        emptyState.hidden = visibleCount > 0;
+      }
+
+    });
+  </script>
+
+</body>
+</html>

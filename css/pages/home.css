@@ -1,0 +1,137 @@
+/* ============================================
+   HOME.CSS — Homepage-specific styles
+   ============================================ */
+
+/* ── Hero Section ─────────────────────────── */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1; /* Above the mesh background */
+  max-width: 800px;
+}
+
+.hero__greeting {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+  animation: slideUp 0.6s ease 0.1s both;
+}
+
+.hero__name {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+  margin-bottom: var(--space-4);
+  animation: slideUp 0.6s ease 0.2s both;
+}
+
+.hero__value-statement {
+  font-size: clamp(1rem, 2.5vw, var(--text-xl));
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+  animation: slideUp 0.6s ease 0.3s both;
+  max-width: 600px;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  animation: slideUp 0.6s ease 0.4s both;
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  animation: fadeIn 1s ease 1s both;
+}
+
+.hero__scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  animation: float 2s ease-in-out infinite;
+}
+
+/* ── Status Badge ─────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  animation: slideUp 0.6s ease 0s both;
+}
+
+.status-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ── Featured Projects Preview ────────────── */
+.featured-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+/* ── Currently Learning Section ──────────── */
+.learning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+/* ── Quick Stats Bar ──────────────────────── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-1);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-block: var(--space-16);
+}
+
+.stats-bar .stat-box {
+  border-right: 1px solid var(--border);
+}
+.stats-bar .stat-box:last-child { border-right: none; }
+
+/* ── Mobile adjustments ───────────────────── */
+@media (max-width: 768px) {
+  .hero { min-height: 90vh; }
+  .hero__cta { flex-direction: column; }
+  .hero__cta .btn { width: 100%; justify-content: center; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+}

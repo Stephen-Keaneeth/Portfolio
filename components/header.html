@@ -1,0 +1,324 @@
+<!-- ============================================
+     HEADER COMPONENT (components/header.html)
+     ============================================
+     This file is loaded dynamically by js/main.js
+     into every page via loadComponent("header", ...).
+     
+     The "active" nav link is set automatically by
+     main.js based on the current page URL.
+     ============================================ -->
+
+<header class="header" id="main-header">
+  <div class="container header__inner">
+
+    <!-- Logo / Name -->
+    <a href="/index.html" class="header__logo" aria-label="Home">
+      <!-- Monogram — replace initials with your own -->
+      <span class="header__logo-mark" aria-hidden="true">NSK</span>
+      <span class="header__logo-text">Stephen Keaneeth<span class="header__logo-dot">.</span></span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list" role="list">
+        <li><a href="/index.html" class="header__nav-link underline-reveal" data-page="index">Home</a></li>
+        <li><a href="/about.html" class="header__nav-link underline-reveal" data-page="about">About</a></li>
+        <li><a href="/projects.html" class="header__nav-link underline-reveal" data-page="projects">Projects</a></li>
+        <li><a href="/skills.html" class="header__nav-link underline-reveal" data-page="skills">Skills</a></li>
+        <li><a href="/certifications.html" class="header__nav-link underline-reveal"
+            data-page="certifications">Certs</a></li>
+        <li><a href="/lab.html" class="header__nav-link underline-reveal" data-page="lab">Lab</a></li>
+        <li><a href="/blog.html" class="header__nav-link underline-reveal" data-page="blog">Blog</a></li>
+        <li><a href="/contact.html" class="header__nav-link header__nav-link--cta" data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mobile hamburger toggle button -->
+    <button class="header__hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false"
+      aria-controls="mobile-menu">
+      <!-- Three lines that animate into an X -->
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" hidden>
+    <nav>
+      <ul class="mobile-menu__list" role="list">
+        <li><a href="/index.html" class="mobile-menu__link" data-page="index">Home</a></li>
+        <li><a href="/about.html" class="mobile-menu__link" data-page="about">About</a></li>
+        <li><a href="/projects.html" class="mobile-menu__link" data-page="projects">Projects</a></li>
+        <li><a href="/skills.html" class="mobile-menu__link" data-page="skills">Skills</a></li>
+        <li><a href="/certifications.html" class="mobile-menu__link" data-page="certifications">Certifications</a></li>
+        <li><a href="/lab.html" class="mobile-menu__link" data-page="lab">Lab</a></li>
+        <li><a href="/blog.html" class="mobile-menu__link" data-page="blog">Blog</a></li>
+        <li><a href="/contact.html" class="mobile-menu__link mobile-menu__link--cta" data-page="contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Header Styles (scoped inside header) ──────────────────── -->
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: var(--z-header);
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color var(--transition-base),
+      background var(--transition-base);
+  }
+
+  /* When page is scrolled, darken the header slightly */
+  .header.scrolled {
+    background: hsla(225, 25%, 8%, 0.95);
+    border-bottom-color: var(--border-light);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  /* ── Logo ── */
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    font-weight: var(--weight-bold);
+    font-size: var(--text-lg);
+  }
+
+  .header__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.05em;
+  }
+
+  .header__logo-text {
+    color: var(--text-primary);
+  }
+
+  .header__logo-dot {
+    color: var(--accent);
+  }
+
+  /* ── Desktop Nav ── */
+  .header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__nav-link {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+    padding-bottom: 2px;
+  }
+
+  .header__nav-link:hover,
+  .header__nav-link.active {
+    color: var(--text-primary);
+  }
+
+  /* Contact link is a button-style CTA */
+  .header__nav-link--cta {
+    padding: var(--space-2) var(--space-5);
+    background: var(--accent-subtle);
+    border: 1px solid hsla(250, 90%, 65%, 0.3);
+    border-radius: var(--radius-full);
+    color: var(--accent) !important;
+    transition: all var(--transition-base);
+  }
+
+  .header__nav-link--cta:hover {
+    background: var(--accent);
+    color: #fff !important;
+    border-color: var(--accent);
+  }
+
+  /* ── Hamburger Button ── */
+  .header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+  }
+
+  .header__hamburger:hover {
+    background: var(--bg-tertiary);
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    transform-origin: center;
+  }
+
+  /* Animate to X when open */
+  .header__hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header__hamburger.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .header__hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Mobile Menu ── */
+  .mobile-menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-6);
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all var(--transition-base);
+    pointer-events: none;
+  }
+
+  /* JS removes [hidden] and adds .open */
+  .mobile-menu:not([hidden]) {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .mobile-menu__link {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    color: var(--text-secondary);
+    font-weight: var(--weight-medium);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-menu__link:hover,
+  .mobile-menu__link.active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  .mobile-menu__link--cta {
+    margin-top: var(--space-2);
+    background: var(--accent);
+    color: #fff !important;
+    text-align: center;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .header__nav {
+      display: none;
+    }
+
+    .header__hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<!-- ── Header JavaScript ─────────────────── -->
+<script>
+  // This script runs immediately after the header is injected into the page.
+  // It handles: scroll effect, hamburger toggle, and active link highlighting.
+
+  (function initHeader() {
+    const header = document.getElementById('main-header');
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // ── Scroll effect: darken header when not at top ──
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // Run once on load
+
+    // ── Hamburger toggle ──
+    hamburger.addEventListener('click', function () {
+      const isOpen = hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+
+      if (isOpen) {
+        mobileMenu.removeAttribute('hidden');
+      } else {
+        mobileMenu.setAttribute('hidden', '');
+      }
+    });
+
+    // ── Close mobile menu when a link is clicked ──
+    mobileMenu.querySelectorAll('.mobile-menu__link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.setAttribute('hidden', '');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Active nav highlight ──
+    // Gets the current page name from the URL (e.g., "about" from "about.html")
+    const path = window.location.pathname;
+    const currentPage = path === '/' || path.endsWith('index.html')
+      ? 'index'
+      : path.split('/').pop().replace('.html', '');
+
+    document.querySelectorAll('[data-page]').forEach(link => {
+      if (link.dataset.page === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+  })();
+</script>

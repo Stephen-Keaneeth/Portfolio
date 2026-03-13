@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lab — small experiments, tools, and explorations by Stephen." />
+  <title>Lab — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/secondary.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="page-content">
+
+    <section class="section" aria-labelledby="lab-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-chip">Experiments</span>
+          <h1 id="lab-heading">The Lab 🧪</h1>
+          <p>
+            Smaller explorations that don't quite fit the "Projects" label — 
+            Kaggle notebooks, cybersecurity labs, mini tools, and experiments
+            that reflect what I'm currently curious about.
+          </p>
+        </div>
+
+        <!-- Filter bar — built from types in lab.json -->
+        <div class="filter-bar" id="lab-filter-bar" role="group" aria-label="Filter experiments by type"></div>
+
+        <div class="spinner" id="lab-loader"></div>
+        <div class="lab-grid reveal-group" id="lab-grid"></div>
+
+      </div>
+    </section>
+
+  </main>
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res  = await fetch('/data/lab.json');
+        const labs = await res.json();
+
+        const loader   = document.getElementById('lab-loader');
+        const grid     = document.getElementById('lab-grid');
+        const filterBar = document.getElementById('lab-filter-bar');
+        loader.style.display = 'none';
+
+        // ── Build filter buttons ──
+        const types = ['All', ...new Set(labs.map(l => l.type))];
+        types.forEach((type, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+          btn.textContent = type;
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#lab-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            grid.querySelectorAll('.lab-card').forEach(card => {
+              card.classList.toggle('hidden', type !== 'All' && card.dataset.type !== type);
+            });
+          });
+          filterBar.appendChild(btn);
+        });
+
+        // ── Render cards ──
+        labs.forEach(lab => {
+          const card = document.createElement('article');
+          card.className = 'lab-card reveal';
+          card.dataset.type = lab.type;
+
+          const link = lab.link
+            ? `<a href="${lab.link}" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:var(--text-sm);padding:var(--space-2) var(--space-4)">View →</a>`
+            : `<span class="tag tag--muted">No link yet</span>`;
+
+          card.innerHTML = `
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span class="lab-card__type-badge">${lab.emoji} ${lab.type}</span>
+              <span style="font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-mono)">${lab.date}</span>
+            </div>
+            <h3 class="lab-card__title">${lab.title}</h3>
+            <p class="lab-card__desc">${lab.description}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:var(--space-3);border-top:1px solid var(--border)">
+              <div class="tags">
+                ${lab.tools.slice(0,3).map(t => `<span class="tag">${t}</span>`).join('')}
+              </div>
+              ${link}
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Could not load lab data:', err);
+      }
+    });
+  </script>
+</body>
+</html>

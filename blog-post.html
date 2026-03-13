@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog post — Stephen's Learning Notes" />
+  <title>Blog Post — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/secondary.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Loading state -->
+      <div id="post-loader" style="padding:var(--space-20) 0">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Error state -->
+      <div id="post-error" hidden style="padding:var(--space-20) 0;text-align:center">
+        <p style="font-size:var(--text-4xl);margin-bottom:var(--space-4)">📭</p>
+        <h2 style="margin-bottom:var(--space-4)">Post Not Found</h2>
+        <p style="color:var(--text-secondary);margin-bottom:var(--space-8)">
+          This post doesn't exist yet, or the URL is wrong.
+        </p>
+        <a href="/blog.html" class="btn btn-primary">← Back to Blog</a>
+      </div>
+
+      <!-- Post content -->
+      <div id="post-content" hidden></div>
+
+    </div>
+  </main>
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    /**
+     * Blog Post Reader
+     * ================
+     * Reads ?id= from URL → finds post metadata in blog.json
+     * → fetches the Markdown (.md) file → converts it to HTML
+     * → renders it on the page.
+     *
+     * WHY NOT store HTML directly?
+     * Markdown is much easier to write. You can focus on content
+     * and the browser converts it to formatted HTML automatically.
+     *
+     * We use a tiny Markdown library called "marked" (CDN),
+     * which parses Markdown to HTML in the browser.
+     */
+
+    // Load the marked library (lightweight Markdown parser)
+    const markedScript = document.createElement('script');
+    markedScript.src = 'https://cdn.jsdelivr.net/npm/marked@9/marked.min.js';
+    document.head.appendChild(markedScript);
+
+    markedScript.onload = async () => {
+      const params  = new URLSearchParams(window.location.search);
+      const postId  = params.get('id');
+
+      const loader  = document.getElementById('post-loader');
+      const errorEl = document.getElementById('post-error');
+      const contentEl = document.getElementById('post-content');
+
+      if (!postId) {
+        loader.hidden = true;
+        errorEl.hidden = false;
+        return;
+      }
+
+      try {
+        // Step 1: Get metadata from blog.json
+        const metaRes = await fetch('/data/blog.json');
+        const posts   = await metaRes.json();
+        const post    = posts.find(p => p.id === postId);
+
+        if (!post) throw new Error('Post not found in index');
+
+        // Step 2: Fetch the Markdown file
+        const mdRes = await fetch(post.file);
+        if (!mdRes.ok) throw new Error('Markdown file not found');
+        const markdownText = await mdRes.text();
+
+        // Step 3: Convert Markdown to HTML using marked
+        const htmlContent = marked.parse(markdownText);
+
+        // Step 4: Update page meta
+        if (window.setPageMeta) {
+          window.setPageMeta({ title: `${post.title} — Stephen`, description: post.excerpt });
+        }
+
+        // Format date
+        const dateStr = new Date(post.date + 'T00:00:00').toLocaleDateString('en-GB', {
+          day: 'numeric', month: 'long', year: 'numeric'
+        });
+
+        // Step 5: Render the post
+        contentEl.innerHTML = `
+          <article class="blog-post-reader">
+            <a href="/blog.html" style="display:inline-flex;align-items:center;gap:var(--space-2);color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-8);transition:color var(--transition-fast)" 
+               onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">
+              ← Back to Blog
+            </a>
+
+            <div class="tags" style="margin-bottom:var(--space-4)">
+              ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+
+            <h1>${post.title}</h1>
+
+            <div class="blog-meta">
+              <span>${dateStr}</span>
+              <span>·</span>
+              <span>${post.readingTime}</span>
+            </div>
+
+            <!-- The converted Markdown HTML goes here -->
+            <div class="markdown-body">
+              ${htmlContent}
+            </div>
+
+            <div style="margin-top:var(--space-16);padding-top:var(--space-8);border-top:1px solid var(--border)">
+              <a href="/blog.html" class="btn btn-ghost">← Back to Blog</a>
+            </div>
+          </article>
+        `;
+
+        loader.hidden   = true;
+        contentEl.hidden = false;
+
+      } catch (err) {
+        console.error('Could not load blog post:', err);
+        loader.hidden  = true;
+        errorEl.hidden = false;
+      }
+    };
+  </script>
+</body>
+</html>

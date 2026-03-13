@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Certifications and achievements — Stephen's CS student portfolio." />
+  <title>Certifications — Stephen</title>
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages/secondary.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="page-content">
+
+    <section class="section" aria-labelledby="certs-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-chip">Achievements</span>
+          <h1 id="certs-heading">Certifications</h1>
+          <p>Courses and certifications I've completed to supplement my degree.</p>
+        </div>
+
+        <!-- Spinner while loading -->
+        <div class="spinner" id="certs-loader"></div>
+
+        <!-- Certs grid populated by JS -->
+        <div class="cert-grid reveal-group" id="certs-grid"></div>
+
+        <!-- Motivational note at the bottom -->
+        <div class="card reveal" style="margin-top:var(--space-12);text-align:center;padding:var(--space-10)">
+          <p style="font-size:var(--text-2xl);margin-bottom:var(--space-3)">📚</p>
+          <h3 style="margin-bottom:var(--space-3)">Always Learning</h3>
+          <p style="color:var(--text-secondary);margin:0;max-width:500px;margin-inline:auto">
+            This section grows as I complete new courses, workshops, and certifications.
+            Next up: <strong style="color:var(--text-primary)">Google Data Analytics Certificate</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div id="footer"></div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res   = await fetch('/data/certifications.json');
+        const certs = await res.json();
+
+        const loader = document.getElementById('certs-loader');
+        const grid   = document.getElementById('certs-grid');
+        loader.style.display = 'none';
+
+        certs.forEach(cert => {
+          const statusColor = cert.status === 'Completed'
+            ? 'var(--success)'
+            : 'var(--warning)';
+
+          const card = document.createElement('div');
+          card.className = 'card cert-card reveal';
+          card.innerHTML = `
+            <div class="cert-card__icon" aria-hidden="true">${cert.issuerEmoji}</div>
+            <div class="cert-card__body">
+              <div class="cert-card__title">${cert.title}</div>
+              <div class="cert-card__issuer">${cert.issuer}</div>
+              <div class="cert-card__date" style="margin-top:var(--space-2)">
+                <span style="color:${statusColor};font-weight:600">${cert.status}</span>
+                &nbsp;·&nbsp;${cert.date}
+              </div>
+              <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-top:var(--space-3)">${cert.description}</p>
+              <div class="tags" style="margin-top:var(--space-3)">
+                ${cert.skills.map(s => `<span class="tag tag--muted">${s}</span>`).join('')}
+              </div>
+              ${cert.link ? `
+              <a href="${cert.link}" target="_blank" rel="noopener" class="btn btn-text" style="margin-top:var(--space-3);font-size:var(--text-sm)">
+                View Certificate →
+              </a>` : ''}
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error('Could not load certifications:', err);
+      }
+    });
+  </script>
+</body>
+</html>

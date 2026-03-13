@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "name": "Languages",
+      "icon": "💻",
+      "skills": [
+        { "name": "Python",     "level": 80, "label": "Proficient" },
+        { "name": "C",          "level": 65, "label": "Comfortable" },
+        { "name": "JavaScript", "level": 60, "label": "Comfortable" },
+        { "name": "HTML & CSS", "level": 75, "label": "Proficient" },
+        { "name": "SQL",        "level": 55, "label": "Learning" }
+      ]
+    },
+    {
+      "name": "Libraries & Frameworks",
+      "icon": "📦",
+      "skills": [
+        { "name": "Pandas",      "level": 75, "label": "Proficient" },
+        { "name": "NumPy",       "level": 70, "label": "Proficient" },
+        { "name": "Scikit-learn","level": 65, "label": "Comfortable" },
+        { "name": "Matplotlib",  "level": 60, "label": "Comfortable" },
+        { "name": "Seaborn",     "level": 60, "label": "Comfortable" },
+        { "name": "Streamlit",   "level": 70, "label": "Proficient" },
+        { "name": "Scapy",       "level": 50, "label": "Learning" }
+      ]
+    },
+    {
+      "name": "Tools & Platforms",
+      "icon": "🔧",
+      "skills": [
+        { "name": "Git & GitHub", "level": 70, "label": "Proficient" },
+        { "name": "Jupyter",      "level": 75, "label": "Proficient" },
+        { "name": "VS Code",      "level": 80, "label": "Proficient" },
+        { "name": "Linux (Ubuntu)","level":55, "label": "Learning" },
+        { "name": "Kaggle",       "level": 65, "label": "Comfortable" }
+      ]
+    },
+    {
+      "name": "Concepts",
+      "icon": "🧠",
+      "skills": [
+        { "name": "Data Structures & Algorithms", "level": 55, "label": "Learning" },
+        { "name": "Machine Learning",             "level": 65, "label": "Comfortable" },
+        { "name": "Networking Fundamentals",      "level": 50, "label": "Learning" },
+        { "name": "Object-Oriented Programming",  "level": 65, "label": "Comfortable" },
+        { "name": "REST APIs",                    "level": 45, "label": "Exploring" }
+      ]
+    }
+  ],
+  "techIcons": [
+    { "name": "Python",     "emoji": "🐍" },
+    { "name": "C",          "emoji": "⚙️" },
+    { "name": "JavaScript", "emoji": "🟨" },
+    { "name": "HTML",       "emoji": "🌐" },
+    { "name": "CSS",        "emoji": "🎨" },
+    { "name": "SQL",        "emoji": "🗄️" },
+    { "name": "Git",        "emoji": "🔀" },
+    { "name": "Linux",      "emoji": "🐧" },
+    { "name": "Jupyter",    "emoji": "📓" },
+    { "name": "Kaggle",     "emoji": "🏆" },
+    { "name": "VSCode",     "emoji": "🖥️" },
+    { "name": "NumPy",      "emoji": "🔢" }
+  ]
+}

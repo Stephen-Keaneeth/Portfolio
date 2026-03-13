@@ -1,0 +1,113 @@
+/* ============================================
+   DESIGN TOKENS (variables.css)
+   ============================================
+   This file contains ALL design variables used
+   across the portfolio. Change values here to
+   update the entire site's look and feel.
+   
+   WHY CSS VARIABLES?
+   - Single source of truth for colors, spacing, fonts
+   - Easy to create themes (dark/light mode)
+   - Change one value → updates everywhere
+   ============================================ */
+
+:root {
+  /* ── Color Palette ── */
+  /* Primary backgrounds — dark navy theme */
+  --bg-primary:       hsl(225, 25%, 8%);
+  --bg-secondary:     hsl(225, 20%, 12%);
+  --bg-tertiary:      hsl(225, 18%, 16%);
+  --bg-glass:         hsla(225, 20%, 12%, 0.7);
+
+  /* Text colors */
+  --text-primary:     hsl(220, 20%, 92%);
+  --text-secondary:   hsl(220, 15%, 65%);
+  --text-muted:       hsl(220, 10%, 45%);
+
+  /* Accent — vivid purple-blue */
+  --accent:           hsl(250, 90%, 65%);
+  --accent-hover:     hsl(250, 90%, 72%);
+  --accent-glow:      hsla(250, 90%, 65%, 0.25);
+  --accent-subtle:    hsla(250, 90%, 65%, 0.08);
+
+  /* Status colors */
+  --success:          hsl(160, 70%, 45%);
+  --warning:          hsl(40, 90%, 55%);
+  --error:            hsl(0, 80%, 60%);
+
+  /* Borders & surfaces */
+  --border:           hsl(225, 15%, 20%);
+  --border-light:     hsl(225, 15%, 25%);
+
+  /* ── Typography ── */
+  --font-primary:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:        'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Type scale (modular — 1.25 ratio) */
+  --text-xs:          0.75rem;    /* 12px */
+  --text-sm:          0.875rem;   /* 14px */
+  --text-base:        1rem;       /* 16px */
+  --text-lg:          1.125rem;   /* 18px */
+  --text-xl:          1.25rem;    /* 20px */
+  --text-2xl:         1.5rem;     /* 24px */
+  --text-3xl:         1.875rem;   /* 30px */
+  --text-4xl:         2.25rem;    /* 36px */
+  --text-5xl:         3rem;       /* 48px */
+  --text-6xl:         3.75rem;    /* 60px */
+
+  /* Font weights */
+  --weight-normal:    400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* Line heights */
+  --leading-tight:    1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.75;
+
+  /* ── Spacing ── */
+  --space-1:          0.25rem;    /* 4px */
+  --space-2:          0.5rem;     /* 8px */
+  --space-3:          0.75rem;    /* 12px */
+  --space-4:          1rem;       /* 16px */
+  --space-5:          1.25rem;    /* 20px */
+  --space-6:          1.5rem;     /* 24px */
+  --space-8:          2rem;       /* 32px */
+  --space-10:         2.5rem;     /* 40px */
+  --space-12:         3rem;       /* 48px */
+  --space-16:         4rem;       /* 64px */
+  --space-20:         5rem;       /* 80px */
+  --space-24:         6rem;       /* 96px */
+
+  /* ── Layout ── */
+  --max-width:        1200px;
+  --content-width:    800px;
+  --sidebar-width:    300px;
+  --header-height:    70px;
+
+  /* ── Border Radius ── */
+  --radius-sm:        6px;
+  --radius-md:        10px;
+  --radius-lg:        16px;
+  --radius-xl:        24px;
+  --radius-full:      9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:        0 1px 3px hsla(0, 0%, 0%, 0.3);
+  --shadow-md:        0 4px 12px hsla(0, 0%, 0%, 0.3);
+  --shadow-lg:        0 8px 30px hsla(0, 0%, 0%, 0.4);
+  --shadow-glow:      0 0 20px var(--accent-glow);
+
+  /* ── Transitions ── */
+  --transition-fast:  150ms ease;
+  --transition-base:  250ms ease;
+  --transition-slow:  400ms ease;
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index Scale ── */
+  --z-dropdown:       100;
+  --z-header:         200;
+  --z-overlay:        300;
+  --z-modal:          400;
+}
