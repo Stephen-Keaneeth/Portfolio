@@ -16,55 +16,70 @@
 
 'use strict';
 
+let revealObserver;
+
 /**
- * Initializes scroll-reveal for all .reveal elements on the page.
- * Call this after the DOM is ready.
+ * Initializes scroll-reveal for all unobserved .reveal elements.
+ * Can be called multiple times safely.
  */
 function initScrollReveal() {
-  // Select all elements that should animate in on scroll
-  const revealElements = document.querySelectorAll('.reveal');
+  const unobserved = document.querySelectorAll('.reveal:not(.observed)');
+  if (unobserved.length === 0) return;
 
-  // If there are none on this page, do nothing
-  if (revealElements.length === 0) return;
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+  }
 
-  /**
-   * Create the observer.
-   * `threshold: 0.1` means the callback fires when 10% of the
-   * element is visible — a small peek triggers the animation.
-   * `rootMargin: '0px 0px -50px 0px'` offsets the trigger
-   * point 50px above the bottom — so elements animate slightly
-   * before fully entering the viewport.
-   */
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        // `isIntersecting` is true when the element is in view
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-
-          // Unobserve after animating — each element only needs to animate once
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-    }
-  );
-
-  // Assign staggered delays based on sibling position
-  // (only within grid/flex containers)
+  // Assign staggered delays inside reveal-groups
   document.querySelectorAll('.reveal-group').forEach((group) => {
     group.querySelectorAll('.reveal').forEach((child, index) => {
-      // Cap at 5 delays to avoid very long waits
       const delay = Math.min(index, 4);
       child.classList.add(`reveal--delay-${delay + 1}`);
     });
   });
 
-  // Start observing every .reveal element
-  revealElements.forEach((el) => observer.observe(el));
+  // Start observing
+  unobserved.forEach((el) => {
+    el.classList.add('observed');
+    revealObserver.observe(el);
+  });
+}
+
+/**
+ * Watches the DOM for newly added elements so that 
+ * dynamically fetched JSON content automatically fades in.
+ */
+function setupDynamicReveal() {
+  const mutObserver = new MutationObserver((mutations) => {
+    let hasNewReveals = false;
+    for (const mut of mutations) {
+      for (const node of mut.addedNodes) {
+        if (node.nodeType === 1) { // Element node
+          if (node.classList.contains('reveal') || node.querySelector('.reveal')) {
+            hasNewReveals = true;
+          }
+        }
+      }
+    }
+    if (hasNewReveals) {
+      initScrollReveal();
+    }
+  });
+
+  mutObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 /**
@@ -124,6 +139,7 @@ function initTypingEffect(el) {
 // ── Initialize on DOM ready ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
+  setupDynamicReveal();
 
   // Initialize typing effect on the hero element if it exists
   const typingEl = document.querySelector('.typing');

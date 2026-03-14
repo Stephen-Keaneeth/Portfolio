@@ -22,38 +22,10 @@
       "Added confidence thresholds to avoid overconfident predictions"
     ],
     "links": {
-      "live": "",
-      "github": "https://github.com/Stephen-Keaneeth/smart-health-ai"
+      "live": "https://github.com/Stephen-Keaneeth/Health-Medical-Imaging",
+      "github": "https://github.com/Stephen-Keaneeth/Health-Medical-Imaging"
     },
     "date": "2026-03",
-    "featured": true
-  },
-  {
-    "id": "network-packet-analyzer",
-    "title": "Network Packet Analyzer",
-    "tagline": "Real-time packet capture and protocol inspection tool",
-    "categories": [
-      "Cybersecurity",
-      "Networking"
-    ],
-    "technologies": [
-      "Python",
-      "Scapy",
-      "Tkinter"
-    ],
-    "emoji": "🔍",
-    "description": "A desktop tool built with Scapy and Tkinter to capture live network packets, decode common protocols (TCP, UDP, ICMP, DNS, HTTP), and display them in a searchable real-time interface. Built while studying networking fundamentals.",
-    "highlights": [
-      "Captures live packets using raw sockets + Scapy",
-      "Decodes Ethernet, IP, TCP, UDP, ICMP and DNS layers",
-      "Filter packets by protocol, source/destination IP",
-      "Export captured sessions to .pcap for Wireshark"
-    ],
-    "links": {
-      "live": "",
-      "github": "https://github.com/Stephen-Keaneeth/packet-analyzer"
-    },
-    "date": "2026-02",
     "featured": true
   },
   {
