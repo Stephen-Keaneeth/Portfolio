@@ -1,14 +1,104 @@
 [
   {
-    "id": "google-data-analytics",
-    "title": "Google Data Analytics Certificate",
-    "issuer": "Google / Coursera",
+    "id": "IndianSpaceWeek-WinterTraining",
+    "title": "Winter Training Astronomy and Astrophysics",
+    "issuer": "IndianSpaceWeek",
     "issuerEmoji": "🎓",
-    "date": "2026-01",
-    "status": "In Progress",
-    "description": "8-course professional certificate covering data cleaning, analysis, and visualization using R, Tableau, and spreadsheets.",
+    "date": "2026-03",
+    "status": "Completed",
+    "description": "Astronomy and Astrophysics course.",
+    "link": "/assets/certs/India Space Week.pdf",
+    "skills": [
+      "Astronomy",
+      "Astrophysics",
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": "INVENZA'26",
+    "title": "INVENZA'26 AIML Alchemists GCET",
+    "issuer": "IndianSpaceWeek",
+    "issuerEmoji": "🎓",
+    "date": "2026-03",
+    "status": "Completed",
+    "description": "INVENZA'26 Ideathon by AIML Alchemists held for 3 days.",
+    "link": "/assets/certs/INVENZA'26.jpeg",
+    "skills": [
+      "Machine Learning",
+      "AI Model Building",
+      "Web Development-AI assisted"
+    ]
+  },
+  {
+    "id": "CloudTechnologies-SprinBoard",
+    "title": "CloudTechnologies Course by SprinBoard Infosys",
+    "issuer": "SprinBoard Infosys",
+    "issuerEmoji": "🎓",
+    "date": "2025-12",
+    "status": "Completed",
+    "description": "CloudTechnologies Course by SprinBoard Infosys.",
+    "link": "/assets/certs/CloudTechnologies_SpringBoard.pdf",
+    "skills": [
+      "Cloud Computing",
+      "AWS"
+    ]
+  },
+  {
+    "id": "Quantum-Computing-Qubitech",
+    "title": "Quantum Computing Course",
+    "issuer": "Qubitech, Amaravati Quantum Valley, WISER",
+    "issuerEmoji": "🎓",
+    "date": "2025-2026",
+    "status": "Completed",
+    "description": "4-week Quantum Fundamentals Program jointly conducted by Qubitech, Amaravati Quantum Valley and WISER.",
+    "link": "https://lms-cdn.qubitech.io/media/certificates/1/ee49b406/9deff14a_18c12919.jpg",
+    "skills": [
+      "Quantum Computing",
+      "Quantum Physics"
+    ]
+  },
+  {
+    "id": "Elsevier-ResearchPaper",
+    "title": "How to Publish with Premium Journals",
+    "issuer": "Elsevier",
+    "issuerEmoji": "🎓",
+    "date": "2025-11",
+    "status": "Completed",
+    "description": "How to Publish with Premium Journals.",
     "link": "",
-    "skills": ["R", "SQL", "Tableau", "Data Analysis"]
+    "links": [
+      {
+        "name": "Certificate1",
+        "url": "/assets/certs/ElsevierResearchPaper/best-practices-writing-research-paper-certificate.pdf"
+      },
+      {
+        "name": "Certificate2",
+        "url": "/assets/certs/ElsevierResearchPaper/essential-tips-publishing-high-impact-journals-certificate.pdf"
+      },
+      {
+        "name": "Certificate3",
+        "url": "/assets/certs/ElsevierResearchPaper/joule-cellpress-how-to-publish-with-premium-journalspdf.pdf"
+      },
+      {
+        "name": "Certificate4",
+        "url": "/assets/certs/ElsevierResearchPaper/review-manuscript-certificate.pdf"
+      },
+      {
+        "name": "Certificate5",
+        "url": "/assets/certs/ElsevierResearchPaper/structuring-article-correctly-certificate.pdf"
+      },
+      {
+        "name": "Certificate6",
+        "url": "/assets/certs/ElsevierResearchPaper/welcome-lancet-group-certificate.pdf"
+      },
+      {
+        "name": "Certificate7",
+        "url": "/assets/certs/ElsevierResearchPaper/write-lay-summary-certificate.pdf"
+      }
+    ],
+    "skills": [
+      "Research Paper"
+    ]
   },
   {
     "id": "cisco-intro-networking",
@@ -19,7 +109,11 @@
     "status": "Completed",
     "description": "Fundamentals of networking: OSI model, IP addressing, subnetting, routing, and switching concepts.",
     "link": "",
-    "skills": ["Networking", "TCP/IP", "Subnetting"]
+    "skills": [
+      "Networking",
+      "TCP/IP",
+      "Subnetting"
+    ]
   },
   {
     "id": "kaggle-pandas",
@@ -30,7 +124,11 @@
     "status": "Completed",
     "description": "Micro-course covering DataFrame manipulation, groupby, merge, and data cleaning with Pandas.",
     "link": "https://www.kaggle.com/learn/pandas",
-    "skills": ["Python", "Pandas", "Data Cleaning"]
+    "skills": [
+      "Python",
+      "Pandas",
+      "Data Cleaning"
+    ]
   },
   {
     "id": "kaggle-ml-intro",
@@ -41,6 +139,10 @@
     "status": "Completed",
     "description": "Fundamental machine learning concepts including decision trees, model validation, and overfitting/underfitting.",
     "link": "https://www.kaggle.com/learn/intro-to-machine-learning",
-    "skills": ["Python", "Scikit-learn", "ML"]
+    "skills": [
+      "Python",
+      "Scikit-learn",
+      "ML"
+    ]
   }
 ]

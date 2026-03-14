@@ -5,53 +5,13 @@
     "type": "Cybersecurity Lab",
     "emoji": "🌐",
     "description": "Hands-on exercises working through Class C subnetting, CIDR notation, wildcard masks, and designing subnets for a small office network. All done in Packet Tracer.",
-    "tools": ["Cisco Packet Tracer", "CIDR", "Networking"],
+    "tools": [
+      "Cisco Packet Tracer",
+      "CIDR",
+      "Networking"
+    ],
     "status": "Completed",
-    "link": "",
+    "link": " ",
     "date": "2026-03"
-  },
-  {
-    "id": "ml-experiments",
-    "title": "ML Algorithm Comparison Notebook",
-    "type": "ML Experiment",
-    "emoji": "🧪",
-    "description": "A systematic experiment comparing Logistic Regression, Decision Tree, Random Forest, SVM, and KNN on the same dataset. Tracks accuracy, training time, and confusion matrices.",
-    "tools": ["Python", "Scikit-learn", "Jupyter", "Matplotlib"],
-    "status": "In Progress",
-    "link": "https://www.kaggle.com/YOUR_KAGGLE/ml-comparison",
-    "date": "2026-02"
-  },
-  {
-    "id": "caesar-cipher",
-    "title": "Caesar Cipher Cracker",
-    "type": "Mini Tool",
-    "emoji": "🔐",
-    "description": "A Python script that cracks Caesar cipher-encoded text using frequency analysis — no brute force needed. Supports auto-detection of shift value.",
-    "tools": ["Python"],
-    "status": "Completed",
-    "link": "https://github.com/YOUR_GITHUB/caesar-cracker",
-    "date": "2025-12"
-  },
-  {
-    "id": "eda-spotify",
-    "title": "Spotify Tracks EDA",
-    "type": "Data Analysis",
-    "emoji": "🎵",
-    "description": "Exploratory data analysis on 600K+ Spotify tracks. Investigated what features (tempo, energy, danceability) correlate most strongly with song popularity.",
-    "tools": ["Python", "Pandas", "Seaborn", "Jupyter"],
-    "status": "Completed",
-    "link": "https://www.kaggle.com/YOUR_KAGGLE/spotify-eda",
-    "date": "2025-11"
-  },
-  {
-    "id": "port-scanner",
-    "title": "Simple Port Scanner",
-    "type": "Cybersecurity Tool",
-    "emoji": "🔭",
-    "description": "A lightweight multi-threaded TCP port scanner built with Python's socket library. Scans a target IP for open ports and identifies common services.",
-    "tools": ["Python", "Socket", "Threading"],
-    "status": "Completed",
-    "link": "https://github.com/YOUR_GITHUB/port-scanner",
-    "date": "2025-10"
   }
 ]

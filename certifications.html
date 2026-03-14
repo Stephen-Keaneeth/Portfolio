@@ -81,6 +81,14 @@
               <a href="${cert.link}" target="_blank" rel="noopener" class="btn btn-text" style="margin-top:var(--space-3);font-size:var(--text-sm)">
                 View Certificate →
               </a>` : ''}
+              ${cert.links ? `
+              <div style="margin-top:var(--space-3);display:flex;flex-wrap:wrap;gap:var(--space-2)">
+                ${cert.links.map(l => `
+                <a href="${l.url}" target="_blank" rel="noopener" style="font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);text-decoration:none;display:inline-flex;align-items:center;transition:all 0.2s ease;background:rgba(255,255,255,0.02)" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)';this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)';this.style.background='rgba(255,255,255,0.02)'">
+                  ${l.name}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:4px;opacity:0.7"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                </a>`).join('')}
+              </div>` : ''}
             </div>
           `;
           grid.appendChild(card);
