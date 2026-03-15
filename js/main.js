@@ -115,6 +115,55 @@ function animatePageEntry() {
   content.classList.add('page-enter');
 }
 
+function initHeader() {
+  const header = document.getElementById('main-header');
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (!header || !hamburger || !mobileMenu) return;
+
+  // ── Scroll effect: darken header when not at top ──
+  function onScroll() {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // Run once on load
+
+  // ── Hamburger toggle ──
+  hamburger.addEventListener('click', function () {
+    const isOpen = hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+
+    if (isOpen) {
+      mobileMenu.removeAttribute('hidden');
+    } else {
+      mobileMenu.setAttribute('hidden', '');
+    }
+  });
+
+  // ── Close mobile menu when a link is clicked ──
+  mobileMenu.querySelectorAll('.mobile-menu__link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.setAttribute('hidden', '');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Active nav highlight ──
+  // Gets the current page name from the URL (e.g., "about" from "about.html")
+  const path = window.location.pathname;
+  const currentPage = path === '/' || path.endsWith('index.html')
+    ? 'index'
+    : path.split('/').pop().replace('.html', '');
+
+  document.querySelectorAll('[data-page]').forEach(link => {
+    if (link.dataset.page === currentPage) {
+      link.classList.add('active');
+    }
+  });
+}
+
 // ── Main Init Function ───────────────────────────────────────────
 /**
  * Called when the DOM is ready.
@@ -133,6 +182,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // After components are loaded, animate the page in
   animatePageEntry();
+  initHeader();
 });
 
 // ── Exported helpers (available to page-specific scripts) ────────

@@ -21,8 +21,8 @@
       "Clean Streamlit UI deployable with zero configuration",
       "Added confidence thresholds to avoid overconfident predictions"
     ],
+    "image": "/assets/images/MediScan.png",
     "links": {
-      "live": "https://github.com/Stephen-Keaneeth/Health-Medical-Imaging",
       "github": "https://github.com/Stephen-Keaneeth/Health-Medical-Imaging"
     },
     "date": "2026-03",

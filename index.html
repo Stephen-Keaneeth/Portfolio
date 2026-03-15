@@ -345,10 +345,14 @@
           card.addEventListener('click', navigate);
           card.addEventListener('keydown', e => { if (e.key === 'Enter') navigate(); });
 
+          const imageHtml = project.image 
+            ? `<img src="${project.image}" alt="${project.title} screenshot" class="project-card__image" loading="lazy" />`
+            : `<div class="project-card__image-placeholder" aria-hidden="true">
+                 <span style="font-size:3rem">${project.emoji || '💻'}</span>
+               </div>`;
+
           card.innerHTML = `
-            <div class="project-card__image-placeholder" aria-hidden="true">
-              <span style="font-size:3rem">${project.emoji || '💻'}</span>
-            </div>
+            ${imageHtml}
             <div class="project-card__meta">
               <span>${project.date}</span>
               <div class="tags">

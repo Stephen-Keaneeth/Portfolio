@@ -121,6 +121,13 @@
           return '<p>' + p.trim() + '</p>';
         }).join('');
 
+        // Build image or placeholder
+        var imageHtml = project.image
+          ? '<img src="' + project.image + '" alt="' + project.title + ' screenshot" class="project-detail__image" />'
+          : '<div class="project-detail__image-placeholder" aria-hidden="true">' +
+              '<span>' + (project.emoji || '💻') + '</span>' +
+            '</div>';
+
         contentEl.innerHTML =
           '<div class="project-detail__hero">' +
             '<a href="/projects.html" class="project-detail__back">' +
@@ -130,9 +137,7 @@
             '<div class="tags" style="margin-bottom:var(--space-4)">' + catTags + '</div>' +
             '<h1 class="project-detail__title">' + project.title + '</h1>' +
             '<p class="project-detail__tagline">' + project.tagline + '</p>' +
-            '<div class="project-detail__image-placeholder" aria-hidden="true">' +
-              '<span>' + (project.emoji || '💻') + '</span>' +
-            '</div>' +
+            imageHtml +
           '</div>' +
           '<div class="project-detail__layout">' +
             '<div class="project-detail__body reveal">' +
