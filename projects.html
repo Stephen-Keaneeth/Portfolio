@@ -117,7 +117,7 @@
         card.setAttribute('tabindex', '0');
         card.setAttribute('aria-label', project.title);
 
-        const navigate = () => window.location.href = `/project.html?id=${project.id}`;
+        const navigate = () => window.location.href = `./project.html?id=${project.id}#${project.id}`;
         card.addEventListener('click', navigate);
         card.addEventListener('keydown', e => { if (e.key === 'Enter') navigate(); });
 

@@ -31,12 +31,12 @@
   },
   {
     "id": "CloudTechnologies-SprinBoard",
-    "title": "CloudTechnologies Course by SprinBoard Infosys",
-    "issuer": "SprinBoard Infosys",
+    "title": "Cloud Technologies Course by SpringBoard",
+    "issuer": "SpringBoard",
     "issuerEmoji": "🎓",
     "date": "2025-12",
     "status": "Completed",
-    "description": "CloudTechnologies Course by SprinBoard Infosys.",
+    "description": "CloudTechnologies Course by SpringBoard.",
     "link": "/assets/certs/CloudTechnologies_SpringBoard.pdf",
     "skills": [
       "Cloud Computing",
@@ -55,6 +55,21 @@
     "skills": [
       "Quantum Computing",
       "Quantum Physics"
+    ]
+  },
+  {
+    "id": "Google-AI-Associate-Certificate",
+    "title": "Google AI Associate Certificate",
+    "issuer": "Google",
+    "issuerEmoji": "🎓",
+    "date": "2026-03",
+    "status": "Completed",
+    "description": "Google AI Associate Certificate.",
+    "link": "https://www.skills.google/public_profiles/9d39f826-f9cd-4fd9-8d23-329e7d780891/badges/22909268",
+    "skills": [
+      "AI",
+      "Machine Learning",
+      "Deep Learning"
     ]
   },
   {

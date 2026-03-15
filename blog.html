@@ -71,7 +71,7 @@
   <script defer>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        const res   = await fetch('/data/blog.json');
+        const res   = await fetch('./data/blog.json');
         const posts = await res.json();
 
         const loader  = document.getElementById('blog-loader');
@@ -119,7 +119,7 @@
 
           const card = document.createElement('a');
           card.className = 'blog-card reveal';
-          card.href = `/blog-post.html?id=${post.id}`;
+          card.href = `./blog-post.html?id=${post.id}#${post.id}`;
           card.dataset.tags = post.tags.join(',');
           card.setAttribute('aria-label', `Read: ${post.title}`);
 

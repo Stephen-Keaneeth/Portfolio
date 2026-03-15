@@ -340,7 +340,7 @@
 
           // Navigate to project detail page on click or Enter key
           const navigate = () => {
-            window.location.href = `/project.html?id=${project.id}`;
+            window.location.href = `./project.html?id=${project.id}#${project.id}`;
           };
           card.addEventListener('click', navigate);
           card.addEventListener('keydown', e => { if (e.key === 'Enter') navigate(); });

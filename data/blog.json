@@ -6,8 +6,26 @@
     "excerpt": "A plain-English walkthrough of subnet masks, CIDR notation, and how to split a network — written while studying for my Cisco networking module.",
     "date": "2026-03-10",
     "readingTime": "7 min read",
-    "tags": ["Networking", "Cybersecurity", "Learning Notes"],
-    "file": "/blog/posts/subnetting.md"
+    "tags": [
+      "Networking",
+      "Cybersecurity",
+      "Learning Notes"
+    ],
+    "file": "./blog/posts/subnetting.md"
+  },
+  {
+    "id": "trappist1e_exoplanet_blog",
+    "title": "Winter Training Astronomy and Astrophysics",
+    "slug": "trappist1e_exoplanet_blog",
+    "excerpt": "A plain-English walkthrough of exoplanet TRAPPIST-1e and how to extract meaningful physical parameters from real data.",
+    "date": "2026-01-05",
+    "readingTime": "5 min read",
+    "tags": [
+      "Astronomy",
+      "Astrophysics",
+      "Data Analysis"
+    ],
+    "file": "./blog/posts/trappist1e_exoplanet_blog.md"
   },
   {
     "id": "kaggle-analysis",
@@ -16,17 +34,26 @@
     "excerpt": "A post-mortem of the Titanic survival prediction competition — what worked, what didn't, and why feature engineering matters more than model choice.",
     "date": "2026-02-18",
     "readingTime": "9 min read",
-    "tags": ["Data Science", "Machine Learning", "Kaggle"],
-    "file": "/blog/posts/kaggle-analysis.md"
+    "tags": [
+      "Data Science",
+      "Machine Learning",
+      "Kaggle"
+    ],
+    "file": "./blog/posts/kaggle-analysis.md"
   },
   {
-    "id": "ai-project-notes",
-    "title": "Building My First ML App — Lessons from Smart Health AI",
-    "slug": "ai-project-notes",
-    "excerpt": "Notes on going from a Jupyter notebook to a deployed Streamlit app. The mistakes I made, how I fixed them, and what I would do differently.",
-    "date": "2026-01-25",
-    "readingTime": "6 min read",
-    "tags": ["AI", "Python", "Streamlit", "Project"],
-    "file": "/blog/posts/ai-project-notes.md"
+    "id": "mediscan_ai_blog",
+    "title": "Building MediScan AI — An AI-Powered Medical Image Diagnostic Prototype",
+    "slug": "mediscan_ai_blog",
+    "excerpt": "A plain-English walkthrough of building MediScan AI — an AI-powered medical image diagnostic prototype.",
+    "date": "2026-03-15",
+    "readingTime": "8 min read",
+    "tags": [
+      "AI",
+      "PyTorch",
+      "Streamlit",
+      "Hackathon"
+    ],
+    "file": "./blog/posts/mediscan_ai_blog.md"
   }
 ]

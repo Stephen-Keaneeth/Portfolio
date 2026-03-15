@@ -47,7 +47,11 @@
   <script>
     async function initProjectPage() {
       const params    = new URLSearchParams(window.location.search);
-      const projectId = params.get('id');
+      let projectId = params.get('id');
+
+      if (!projectId && window.location.hash) {
+        projectId = window.location.hash.substring(1).replace('id=', '');
+      }
 
       const loader    = document.getElementById('project-loader');
       const errorEl   = document.getElementById('project-error');
