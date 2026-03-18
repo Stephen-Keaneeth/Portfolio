@@ -135,29 +135,14 @@
     "title": "Pandas — Data Manipulation",
     "issuer": "Kaggle",
     "issuerEmoji": "🏆",
-    "date": "2025-10",
-    "status": "Completed",
+    "date": "",
+    "status": "In Progress",
     "description": "Micro-course covering DataFrame manipulation, groupby, merge, and data cleaning with Pandas.",
     "link": "https://www.kaggle.com/learn/pandas",
     "skills": [
       "Python",
       "Pandas",
       "Data Cleaning"
-    ]
-  },
-  {
-    "id": "kaggle-ml-intro",
-    "title": "Intro to Machine Learning",
-    "issuer": "Kaggle",
-    "issuerEmoji": "🏆",
-    "date": "2025-09",
-    "status": "Completed",
-    "description": "Fundamental machine learning concepts including decision trees, model validation, and overfitting/underfitting.",
-    "link": "https://www.kaggle.com/learn/intro-to-machine-learning",
-    "skills": [
-      "Python",
-      "Scikit-learn",
-      "ML"
     ]
   }
 ]
