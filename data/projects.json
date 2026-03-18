@@ -29,61 +29,33 @@
     "featured": true
   },
   {
-    "id": "kaggle-titanic",
-    "title": "Titanic Survival Predictor",
-    "tagline": "Kaggle competition — top 15% leaderboard ranking",
+    "id": "isa-project",
+    "title": "ISA Project Astronomy n Astrophysics",
+    "tagline": "A project on Astronomy and Astrophysics",
     "categories": [
-      "Data Science",
-      "ML"
+      "Project",
+      "Astronomy and Astrophysics",
+      "ISA"
     ],
     "technologies": [
-      "Python",
-      "Pandas",
-      "Seaborn",
-      "XGBoost",
-      "Jupyter"
+      "Data Analysis",
+      "Excel",
+      "NASA Exoplanet Archive (web)",
+      "Lightkurve"
     ],
-    "emoji": "🚢",
-    "description": "My first Kaggle competition. Explored the Titanic dataset, performed feature engineering (family size, title extraction, age imputation), and trained an XGBoost model with cross-validation. Achieved ~0.80 accuracy placing in the top 15% of the leaderboard.",
+    "emoji": "🔭",
+    "description": "This project is a comprehensive data analysis of exoplanets using Python and its libraries. It covers data cleaning, exploratory data analysis, and visualization to understand the properties of exoplanets.",
     "highlights": [
-      "Extensive EDA with Seaborn visualizations",
-      "Feature engineering: FamilySize, Title, IsAlone",
-      "XGBoost with hyperparameter tuning via GridSearchCV",
-      "0.802 accuracy — top 15% on public Kaggle leaderboard"
+      "Analyzed a dataset of exoplanets to understand their properties",
+      "Physics Calculations on real data obtained through NASA database",
+      "Used Python and its libraries to perform data analysis",
+      "Created visualizations to understand the properties of exoplanets"
     ],
     "links": {
-      "live": "https://www.kaggle.com/stephen-keaneeth/titanic",
-      "github": "https://github.com/Stephen-Keaneeth/titanic"
+      "live": "/assets/pdfs/ISA_PROJECT.pdf",
+      "github": "https://github.com/Stephen-Keaneeth/ISA_AstronomyAstrophysics.git"
     },
     "date": "2026-01",
-    "featured": true
-  },
-  {
-    "id": "dsa-visualizer",
-    "title": "DSA Algorithm Visualizer",
-    "tagline": "Interactive visual explanations of sorting and graph algorithms",
-    "categories": [
-      "Tools",
-      "Education"
-    ],
-    "technologies": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "emoji": "📊",
-    "description": "A browser-based tool that animates common algorithms step by step. Built to help myself and classmates understand how Bubble Sort, Merge Sort, Binary Search, and BFS/DFS actually work under the hood. No external libraries — pure vanilla JS canvas animations.",
-    "highlights": [
-      "Visualizes Bubble, Selection, Insertion, Merge, Quick Sort",
-      "BFS and DFS on a grid with step-by-step playback",
-      "Speed control and custom array input",
-      "Zero dependencies — 100% vanilla HTML/CSS/JS"
-    ],
-    "links": {
-      "live": "https://stephen-keaneeth.github.io/dsa-visualizer",
-      "github": "https://github.com/Stephen-Keaneeth/dsa-visualizer"
-    },
-    "date": "2025-12",
     "featured": false
   }
 ]
