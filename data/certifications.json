@@ -15,6 +15,23 @@
     ]
   },
   {
+    "id": "KaggleDataVisualization",
+    "title": "Kaggle - Data Visualization Course",
+    "issuer": "Kaggle",
+    "issuerEmoji": "🎓",
+    "date": "2026-03",
+    "status": "Completed",
+    "description": "Data Visualization course.",
+    "link": "/assets/certs/KaggleDataVisualization.png",
+    "skills": [
+      "Data Visualization",
+      "Data Analysis",
+      "Python",
+      "Matplotlib",
+      "Seaborn"
+    ]
+  },
+  {
     "id": "INVENZA'26",
     "title": "INVENZA'26 AIML Alchemists GCET",
     "issuer": "IndianSpaceWeek",
