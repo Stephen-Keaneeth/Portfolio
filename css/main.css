@@ -1,19 +1,16 @@
 /* ============================================
    MAIN.CSS — Global Styles & Layout
-   ============================================
-   This file covers:
-   1. CSS Reset (remove browser default styles)
-   2. Typography (headings, paragraphs, links)
-   3. Layout utilities (containers, grids, flex)
-   4. Scrollbar styling
-   5. Selection styling
+   CINEMATIC TERMINAL v2.0
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* ── Google Fonts ─────────────────────────── */
+/* Playfair Display — editorial serif for hero h1s */
+/* Inter — clean body copy */
+/* JetBrains Mono — all technical/HUD text */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import './variables.css';
 
 /* ── 1. Reset ─────────────────────────────── */
-/* Modern CSS reset: removes inconsistent browser defaults */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -21,12 +18,13 @@
 }
 
 html {
-  /* Smooth scrolling for anchor links */
-  scroll-behavior: smooth;
-  /* Prevent text size adjustment on mobile */
+  /* Lenis handles smooth scrolling — native scroll-behavior disabled */
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
 }
 
+/* Blueprint grid — full-screen crosshatch of thin teal-tinted lines */
+/* Creates the engineering drawing / HUD background feel */
 body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -34,69 +32,111 @@ body {
   line-height: var(--leading-normal);
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  /* Prevent horizontal overflow on mobile */
   overflow-x: hidden;
-  /* Smooth font rendering on macOS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
 
-/* Remove list styles — we'll apply them intentionally */
+/* The blueprint grid overlay — purely decorative, no interaction */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;  /* Behind ALL content — no stacking context tricks needed */
+  pointer-events: none;
+  background-image:
+    /* Vertical lines every 80px */
+    repeating-linear-gradient(
+      to right,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    /* Horizontal lines every 80px */
+    repeating-linear-gradient(
+      to bottom,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+}
+
+/* No forced stacking contexts on body children.
+   Body::before at z-index: -1 naturally sits behind all normal-flow content.
+   Each component manages its own z-index (header: 200, modal: 400, etc.) */
+
 ul, ol { list-style: none; }
 
-/* Remove default link decoration */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Make images responsive by default */
 img, video {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Form elements use body font */
 input, textarea, select, button {
   font-family: inherit;
   font-size: inherit;
 }
 
 /* ── 2. Typography ────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
+
+/* h1 — Playfair Display serif: the editorial anchor */
+h1 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+/* h2 — Inter, bold — section titles stay clean */
+h2 {
+  font-family: var(--font-primary);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2rem, 5vw, var(--text-5xl)); }
-h2 { font-size: clamp(1.5rem, 3vw, var(--text-4xl)); }
-h3 { font-size: clamp(1.25rem, 2.5vw, var(--text-3xl)); }
+h3, h4, h5, h6 {
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+/* Fluid type scale */
+h1 { font-size: clamp(2.8rem, 7vw, 6rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.85rem); }
 h4 { font-size: var(--text-2xl); }
 h5 { font-size: var(--text-xl); }
 h6 { font-size: var(--text-lg); }
 
-/* clamp() explanation: font scales fluidly between a min and max value
-   based on viewport width — no breakpoints needed for typography */
-
 p {
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
-  max-width: 70ch; /* Optimal reading width (~70 characters) */
+  max-width: 68ch;
 }
 
-code, pre {
+/* Mono text — the "terminal" half of the hybrid */
+code, pre, .mono {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+  font-size: 0.875em;
 }
 
 code {
   background: var(--bg-tertiary);
   color: var(--accent);
-  padding: 0.15em 0.4em;
+  padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-light);
 }
 
 pre {
@@ -105,6 +145,7 @@ pre {
   border-radius: var(--radius-md);
   padding: var(--space-6);
   overflow-x: auto;
+  border-left: 2px solid var(--accent);
 }
 
 pre code {
@@ -119,29 +160,22 @@ em { font-style: italic; }
 
 /* ── 3. Layout Utilities ──────────────────── */
 
-/* Main page wrapper — constrains content width and centers it */
 .container {
   width: 100%;
   max-width: var(--max-width);
-  margin-inline: auto;       /* Centers the container */
-  padding-inline: var(--space-6);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
 }
 
-/* Narrower container for article/blog content */
 .container--narrow {
   max-width: var(--content-width);
 }
 
-/* Page section — adds consistent vertical padding */
-.section {
-  padding-block: var(--space-24);
-}
+/* Section spacing */
+.section       { padding-block: var(--space-24); }
+.section--sm   { padding-block: var(--space-16); }
+.section--lg   { padding-block: var(--space-32); }
 
-.section--sm {
-  padding-block: var(--space-16);
-}
-
-/* Section header — title + subtitle */
 .section-header {
   margin-bottom: var(--space-12);
 }
@@ -155,9 +189,35 @@ em { font-style: italic; }
   font-size: var(--text-lg);
 }
 
+/* Horizontal rule between section header and content */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin-block: var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Short teal sweep on hover */
+.section-divider::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 60px;
+  background: var(--accent);
+  opacity: 0.6;
+  animation: dividerSweep 3s ease-in-out infinite;
+}
+
+@keyframes dividerSweep {
+  0%   { transform: translateX(-80px); }
+  100% { transform: translateX(1400px); }
+}
+
 /* ── Grid utilities ── */
-/* Auto-fit grid: columns fill available space, min 300px each */
-.grid-auto { 
+.grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-6);
@@ -176,30 +236,29 @@ em { font-style: italic; }
 }
 
 /* ── Flex utilities ── */
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.items-start { align-items: flex-start; }
+.flex           { display: flex; }
+.flex-col       { flex-direction: column; }
+.items-center   { align-items: center; }
+.items-start    { align-items: flex-start; }
 .justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.gap-2 { gap: var(--space-2); }
-.gap-3 { gap: var(--space-3); }
-.gap-4 { gap: var(--space-4); }
-.gap-6 { gap: var(--space-6); }
-.gap-8 { gap: var(--space-8); }
+.justify-between{ justify-content: space-between; }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
 
 /* ── Spacing utilities ── */
-.mt-auto { margin-top: auto; }
+.mt-auto     { margin-top: auto; }
 .text-center { text-align: center; }
-.text-right { text-align: right; }
+.text-right  { text-align: right; }
 
 /* ── 4. Scrollbar Styling ─────────────────── */
-/* Custom scrollbar — only works in Webkit browsers (Chrome, Edge, Safari) */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar       { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb {
   background: var(--border-light);
-  border-radius: var(--radius-full);
+  border-radius: 0; /* Brutalist — no radius */
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
@@ -209,10 +268,9 @@ em { font-style: italic; }
   color: var(--text-primary);
 }
 
-/* ── 6. Focus Styles (Accessibility) ─────── */
-/* Visible focus ring for keyboard users */
+/* ── 6. Focus Styles ──────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -220,33 +278,46 @@ em { font-style: italic; }
 /* ── 7. Helper Classes ────────────────────── */
 .visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
 }
 
+/* Accent text — teal colour, no gradient (cleaner and more technical) */
+.accent-text {
+  color: var(--accent);
+}
+
+/* Gradient text — teal to slightly shifted teal (subtle, not garish) */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent), hsl(200, 90%, 65%));
+  background: linear-gradient(135deg, var(--accent), hsl(185, 80%, 62%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Accent line — horizontal divider accent */
 .accent-line {
   display: inline-block;
-  width: 48px;
-  height: 3px;
+  width: 32px;
+  height: 2px;
   background: var(--accent);
-  border-radius: var(--radius-full);
-  margin-bottom: var(--space-4);
+  border-radius: 0; /* Brutalist */
 }
 
-/* Page transition wrapper */
+/* Mono label — the "terminal" treatment for labels, IDs, metadata */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Page content wrapper */
 .page-content {
   opacity: 1;
   transform: translateY(0);
@@ -255,21 +326,15 @@ em { font-style: italic; }
 }
 
 /* ── 8. Responsive Breakpoints ────────────── */
-/* Mobile-first: styles above apply to all screens.
-   Breakpoints add overrides for larger screens. */
-
-/* Tablet and below (≤768px) */
 @media (max-width: 768px) {
-  .grid-2 { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr; }
-  .grid-auto { grid-template-columns: 1fr; }
-  
+  .grid-2, .grid-3, .grid-auto {
+    grid-template-columns: 1fr;
+  }
   .section { padding-block: var(--space-16); }
-  
-  .container { padding-inline: var(--space-4); }
+  .section--lg { padding-block: var(--space-20); }
+  .container { padding-inline: var(--space-5); }
 }
 
-/* Small tablet (769px – 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }

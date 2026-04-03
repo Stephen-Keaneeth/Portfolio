@@ -1,42 +1,43 @@
 <!-- ============================================
-     HEADER COMPONENT (components/header.html)
+     HEADER COMPONENT — CINEMATIC TERMINAL v2.0
      ============================================
-     This file is loaded dynamically by js/main.js
-     into every page via loadComponent("header", ...).
-     
-     The "active" nav link is set automatically by
-     main.js based on the current page URL.
+     Loaded dynamically by js/main.js.
+     Mono nav links, technical [ SK ] logo mark,
+     top frame accent line.
      ============================================ -->
 
 <header class="header" id="main-header">
+
+  <!-- Top frame line — the outer "edge" of the HUD -->
+  <div class="header__frame-line" aria-hidden="true"></div>
+
   <div class="container header__inner">
 
-    <!-- Logo / Name -->
-    <a href="/index.html" class="header__logo" aria-label="Home">
-      <!-- Monogram — replace initials with your own -->
-      <span class="header__logo-mark" aria-hidden="true">NSK</span>
-      <span class="header__logo-text">Stephen Keaneeth<span class="header__logo-dot">.</span></span>
+    <!-- Logo — technical bracket mark -->
+    <a href="/index.html" class="header__logo" aria-label="Home — Stephen Keaneeth">
+      <!-- Monogram in code-block style -->
+      <span class="header__logo-mark" aria-hidden="true">[ SK ]</span>
+      <span class="header__logo-divider" aria-hidden="true">/</span>
+      <span class="header__logo-text">Stephen Keaneeth</span>
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="header__nav" aria-label="Main navigation">
       <ul class="header__nav-list" role="list">
-        <li><a href="/index.html" class="header__nav-link underline-reveal" data-page="index">Home</a></li>
-        <li><a href="/about.html" class="header__nav-link underline-reveal" data-page="about">About</a></li>
-        <li><a href="/projects.html" class="header__nav-link underline-reveal" data-page="projects">Projects</a></li>
-        <li><a href="/skills.html" class="header__nav-link underline-reveal" data-page="skills">Skills</a></li>
-        <li><a href="/certifications.html" class="header__nav-link underline-reveal"
-            data-page="certifications">Certs</a></li>
-        <li><a href="/lab.html" class="header__nav-link underline-reveal" data-page="lab">Lab</a></li>
-        <li><a href="/blog.html" class="header__nav-link underline-reveal" data-page="blog">Blog</a></li>
-        <li><a href="/contact.html" class="header__nav-link header__nav-link--cta" data-page="contact">Contact</a></li>
+        <li><a href="/index.html"          class="header__nav-link underline-reveal" data-page="index">Home</a></li>
+        <li><a href="/about.html"          class="header__nav-link underline-reveal" data-page="about">About</a></li>
+        <li><a href="/projects.html"       class="header__nav-link underline-reveal" data-page="projects">Projects</a></li>
+        <li><a href="/skills.html"         class="header__nav-link underline-reveal" data-page="skills">Skills</a></li>
+        <li><a href="/certifications.html" class="header__nav-link underline-reveal" data-page="certifications">Certs</a></li>
+        <li><a href="/lab.html"            class="header__nav-link underline-reveal" data-page="lab">Lab</a></li>
+        <li><a href="/blog.html"           class="header__nav-link underline-reveal" data-page="blog">Blog</a></li>
+        <li><a href="/contact.html"        class="header__nav-link header__nav-link--cta" data-page="contact">Contact</a></li>
       </ul>
     </nav>
 
-    <!-- Mobile hamburger toggle button -->
-    <button class="header__hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false"
-      aria-controls="mobile-menu">
-      <!-- Three lines that animate into an X -->
+    <!-- Mobile hamburger -->
+    <button class="header__hamburger" id="hamburger-btn"
+      aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -48,40 +49,50 @@
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" hidden>
     <nav>
       <ul class="mobile-menu__list" role="list">
-        <li><a href="/index.html" class="mobile-menu__link" data-page="index">Home</a></li>
-        <li><a href="/about.html" class="mobile-menu__link" data-page="about">About</a></li>
-        <li><a href="/projects.html" class="mobile-menu__link" data-page="projects">Projects</a></li>
-        <li><a href="/skills.html" class="mobile-menu__link" data-page="skills">Skills</a></li>
+        <li><a href="/index.html"          class="mobile-menu__link" data-page="index">Home</a></li>
+        <li><a href="/about.html"          class="mobile-menu__link" data-page="about">About</a></li>
+        <li><a href="/projects.html"       class="mobile-menu__link" data-page="projects">Projects</a></li>
+        <li><a href="/skills.html"         class="mobile-menu__link" data-page="skills">Skills</a></li>
         <li><a href="/certifications.html" class="mobile-menu__link" data-page="certifications">Certifications</a></li>
-        <li><a href="/lab.html" class="mobile-menu__link" data-page="lab">Lab</a></li>
-        <li><a href="/blog.html" class="mobile-menu__link" data-page="blog">Blog</a></li>
-        <li><a href="/contact.html" class="mobile-menu__link mobile-menu__link--cta" data-page="contact">Contact</a>
-        </li>
+        <li><a href="/lab.html"            class="mobile-menu__link" data-page="lab">Lab</a></li>
+        <li><a href="/blog.html"           class="mobile-menu__link" data-page="blog">Blog</a></li>
+        <li><a href="/contact.html"        class="mobile-menu__link mobile-menu__link--cta" data-page="contact">Contact</a></li>
       </ul>
     </nav>
   </div>
+
 </header>
 
-<!-- ── Header Styles (scoped inside header) ──────────────────── -->
 <style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--header-height);
-    z-index: var(--z-header);
-    background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    transition: border-color var(--transition-base),
-      background var(--transition-base);
+  /* Top accent frame line */
+  .header__frame-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      var(--accent) 30%,
+      var(--accent) 70%,
+      transparent 100%
+    );
+    opacity: 0.4;
   }
 
-  /* When page is scrolled, darken the header slightly */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-height);
+    z-index: var(--z-header);
+    background: hsla(0, 0%, 5%, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color var(--transition-base), background var(--transition-base);
+  }
+
   .header.scrolled {
-    background: hsla(225, 25%, 8%, 0.95);
+    background: hsla(0, 0%, 4%, 0.97);
     border-bottom-color: var(--border-light);
   }
 
@@ -90,54 +101,61 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    gap: var(--space-6);
   }
 
   /* ── Logo ── */
   .header__logo {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-2);
     text-decoration: none;
-    font-weight: var(--weight-bold);
-    font-size: var(--text-lg);
+    flex-shrink: 0;
   }
 
+  /* [ SK ] bracket mark — monospaced, no background fill */
   .header__logo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
     font-size: var(--text-sm);
     font-weight: var(--weight-bold);
-    letter-spacing: -0.05em;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .header__logo-divider {
+    font-family: var(--font-mono);
+    color: var(--border-light);
+    font-size: var(--text-sm);
   }
 
   .header__logo-text {
-    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
   }
 
-  .header__logo-dot {
-    color: var(--accent);
-  }
+  .header__logo:hover .header__logo-text { color: var(--text-primary); }
+  .header__logo:hover .header__logo-mark { color: var(--accent-hover); }
 
   /* ── Desktop Nav ── */
   .header__nav-list {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-5);
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
   }
 
   .header__nav-link {
-    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
     font-weight: var(--weight-medium);
-    color: var(--text-secondary);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--text-muted);
     transition: color var(--transition-fast);
     padding-bottom: 2px;
   }
@@ -147,23 +165,27 @@
     color: var(--text-primary);
   }
 
-  /* Contact link is a button-style CTA */
+  /* Contact — the CTA chip */
   .header__nav-link--cta {
-    padding: var(--space-2) var(--space-5);
+    padding: 6px var(--space-4);
     background: var(--accent-subtle);
-    border: 1px solid hsla(250, 90%, 65%, 0.3);
-    border-radius: var(--radius-full);
+    border: 1px solid hsla(172, 85%, 44%, 0.25);
+    border-radius: var(--radius-sm);
     color: var(--accent) !important;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
     transition: all var(--transition-base);
   }
 
   .header__nav-link--cta:hover {
     background: var(--accent);
-    color: #fff !important;
+    color: #000 !important;
     border-color: var(--accent);
   }
 
-  /* ── Hamburger Button ── */
+  /* ── Hamburger ── */
   .header__hamburger {
     display: none;
     flex-direction: column;
@@ -172,57 +194,51 @@
     width: 36px;
     height: 36px;
     background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
+    border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    transition: background var(--transition-fast);
+    cursor: pointer;
+    padding: 6px;
+    transition: border-color var(--transition-fast);
   }
 
-  .header__hamburger:hover {
-    background: var(--bg-tertiary);
-  }
+  .header__hamburger:hover { border-color: var(--accent); }
 
   .hamburger-line {
     display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text-primary);
-    border-radius: var(--radius-full);
+    width: 100%;
+    height: 1px;
+    background: var(--text-secondary);
+    border-radius: 0; /* Brutalist */
     transition: all var(--transition-base);
     transform-origin: center;
   }
 
-  /* Animate to X when open */
   .header__hamburger.open .hamburger-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
   }
-
   .header__hamburger.open .hamburger-line:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
   }
-
   .header__hamburger.open .hamburger-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   /* ── Mobile Menu ── */
   .mobile-menu {
     position: fixed;
     top: var(--header-height);
-    left: 0;
-    right: 0;
-    background: var(--bg-secondary);
+    left: 0; right: 0;
+    background: hsla(0, 0%, 5%, 0.98);
     border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
     padding: var(--space-6);
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     opacity: 0;
     transition: all var(--transition-base);
     pointer-events: none;
   }
 
-  /* JS removes [hidden] and adds .open */
   .mobile-menu:not([hidden]) {
     transform: translateY(0);
     opacity: 1;
@@ -232,41 +248,44 @@
   .mobile-menu__list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 2px;
   }
 
   .mobile-menu__link {
     display: block;
     padding: var(--space-3) var(--space-4);
-    color: var(--text-secondary);
-    font-weight: var(--weight-medium);
-    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
   }
 
   .mobile-menu__link:hover,
   .mobile-menu__link.active {
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--accent-subtle);
   }
 
   .mobile-menu__link--cta {
-    margin-top: var(--space-2);
+    margin-top: var(--space-4);
     background: var(--accent);
-    color: #fff !important;
+    color: #000 !important;
+    border-left-color: transparent !important;
     text-align: center;
+    font-weight: var(--weight-bold);
   }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .header__nav {
-      display: none;
-    }
-
-    .header__hamburger {
-      display: flex;
-    }
+    .header__nav    { display: none; }
+    .header__hamburger { display: flex; }
+    .header__logo-text { display: none; } /* Just show [ SK ] on mobile */
   }
 </style>
 
-<!-- The JavaScript for the header is now handled in js/main.js -->
+<!-- JS is handled by main.js -->
