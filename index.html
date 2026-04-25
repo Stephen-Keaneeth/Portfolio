@@ -85,7 +85,7 @@
           <strong>AI</strong>, <strong>Data Science</strong>, and
           <strong>Cybersecurity</strong> &mdash;
           currently a&nbsp;<span class="typing accent-text"
-            data-words="1st Year Student,Problem Solver,Lifelong Learner,Open Source Contributor">
+            data-words="1st Year Student,Problem Solver,Lifelong Learner">
             1st Year Student
           </span><span class="typing-cursor" aria-hidden="true"></span>
         </p>
@@ -102,7 +102,8 @@
           <a href="/about.html" class="btn btn-ghost" id="hero-cta-about">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 1 0-16 0" />
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 1 0-16 0" />
             </svg>
             About Me
           </a>
@@ -274,8 +275,8 @@
             </p>
             <div class="cta-block__actions">
               <a href="/contact.html" class="btn btn-primary btn-magnetic" id="cta-contact-btn">Get In Touch</a>
-              <a href="https://github.com/Stephen-Keaneeth" target="_blank" rel="noopener"
-                class="btn btn-ghost" id="cta-github-btn">GitHub Profile</a>
+              <a href="https://github.com/Stephen-Keaneeth" target="_blank" rel="noopener" class="btn btn-ghost"
+                id="cta-github-btn">GitHub Profile</a>
             </div>
           </div>
           <!-- Background decorative large text -->
@@ -316,19 +317,19 @@
           ]);
 
           const projects = await projectsRes.json();
-          const certs    = await certsRes.json();
-          const labs     = await labsRes.json();
+          const certs = await certsRes.json();
+          const labs = await labsRes.json();
 
           const projectsEl = document.getElementById('count-projects');
-          const certsEl    = document.getElementById('count-certs');
-          const labsEl     = document.getElementById('count-labs');
+          const certsEl = document.getElementById('count-certs');
+          const labsEl = document.getElementById('count-labs');
 
           if (projectsEl) projectsEl.textContent = projects.length;
           // For certs, maybe we only want to count completed ones? 
           // But the user said "add or remove", so let's count all for now.
-          if (certsEl)    certsEl.textContent    = certs.length;
-          if (labsEl)     labsEl.textContent     = labs.length;
-          
+          if (certsEl) certsEl.textContent = certs.length;
+          if (labsEl) labsEl.textContent = labs.length;
+
         } catch (err) {
           console.error('Could not update stats:', err);
         }
@@ -338,18 +339,18 @@
 
       // ── Featured Projects ──
       try {
-        const res      = await fetch('/data/projects.json');
+        const res = await fetch('/data/projects.json');
         const projects = await res.json();
-        const loader   = document.getElementById('projects-loader');
-        const grid     = document.getElementById('featured-projects-grid');
+        const loader = document.getElementById('projects-loader');
+        const grid = document.getElementById('featured-projects-grid');
 
         if (loader) loader.style.display = 'none';
 
         projects.filter(p => p.featured).forEach(project => {
           const card = document.createElement('article');
           card.className = 'card project-card reveal';
-          card.setAttribute('role',      'link');
-          card.setAttribute('tabindex',  '0');
+          card.setAttribute('role', 'link');
+          card.setAttribute('tabindex', '0');
           card.setAttribute('aria-label', `View project: ${project.title}`);
 
           const navigate = () => {
@@ -395,7 +396,7 @@
 
       // ── Skills Tags ──
       try {
-        const res  = await fetch('/data/skills.json');
+        const res = await fetch('/data/skills.json');
         const data = await res.json();
         const container = document.getElementById('skills-tags');
 
@@ -415,4 +416,5 @@
   </script>
 
 </body>
+
 </html>
