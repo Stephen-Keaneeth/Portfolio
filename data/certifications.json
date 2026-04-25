@@ -32,6 +32,27 @@
     ]
   },
   {
+    "id": "NPTEL-PythonForDS",
+    "title": "Python for Data Science",
+    "issuer": "NPTEL",
+    "issuerEmoji": "🎓",
+    "date": "2026-01",
+    "status": "Completed",
+    "description": "Python for Data Science course.",
+    "link": "/assets/certs/NOC26CS80S35730187203192656.pdf",
+    "skills": [
+      "Python",
+      "Data Science",
+      "NumPy",
+      "Pandas",
+      "Data Analysis",
+      "EDA",
+      "Matplotlib",
+      "Seaborn",
+      "Machine Learning"
+    ]
+  },
+  {
     "id": "INVENZA'26",
     "title": "INVENZA'26 AIML Alchemists GCET",
     "issuer": "IndianSpaceWeek",
@@ -75,18 +96,17 @@
     ]
   },
   {
-    "id": "Google-AI-Associate-Certificate",
-    "title": "Google AI Associate Certificate",
+    "id": "Google-Security-in-AI",
+    "title": "Introduction to Security in AI Course",
     "issuer": "Google",
     "issuerEmoji": "🎓",
     "date": "2026-03",
     "status": "Completed",
-    "description": "Google AI Associate Certificate.",
+    "description": "Introduction to Security in AI Course by Google.",
     "link": "https://www.skills.google/public_profiles/9d39f826-f9cd-4fd9-8d23-329e7d780891/badges/22909268",
     "skills": [
       "AI",
-      "Machine Learning",
-      "Deep Learning"
+      "Security"
     ]
   },
   {

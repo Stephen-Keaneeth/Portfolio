@@ -140,17 +140,17 @@
         <div class="stats-bar">
 
           <div class="stat-box reveal" id="stat-projects">
-            <div class="stat-box__number">3</div>
+            <div class="stat-box__number" id="count-projects">0</div>
             <div class="stat-box__label">Projects Built</div>
           </div>
 
           <div class="stat-box reveal reveal--delay-1">
-            <div class="stat-box__number">3</div>
+            <div class="stat-box__number" id="count-certs">0</div>
             <div class="stat-box__label">Certifications</div>
           </div>
 
           <div class="stat-box reveal reveal--delay-2">
-            <div class="stat-box__number">5</div>
+            <div class="stat-box__number" id="count-labs">0</div>
             <div class="stat-box__label">Lab Experiments</div>
           </div>
 
@@ -305,6 +305,36 @@
      * Loads projects and skills from JSON, renders them into the DOM.
      */
     document.addEventListener('DOMContentLoaded', async () => {
+
+      // ── Quick Stats ──
+      const updateStats = async () => {
+        try {
+          const [projectsRes, certsRes, labsRes] = await Promise.all([
+            fetch('/data/projects.json'),
+            fetch('/data/certifications.json'),
+            fetch('/data/lab.json')
+          ]);
+
+          const projects = await projectsRes.json();
+          const certs    = await certsRes.json();
+          const labs     = await labsRes.json();
+
+          const projectsEl = document.getElementById('count-projects');
+          const certsEl    = document.getElementById('count-certs');
+          const labsEl     = document.getElementById('count-labs');
+
+          if (projectsEl) projectsEl.textContent = projects.length;
+          // For certs, maybe we only want to count completed ones? 
+          // But the user said "add or remove", so let's count all for now.
+          if (certsEl)    certsEl.textContent    = certs.length;
+          if (labsEl)     labsEl.textContent     = labs.length;
+          
+        } catch (err) {
+          console.error('Could not update stats:', err);
+        }
+      };
+
+      updateStats();
 
       // ── Featured Projects ──
       try {
