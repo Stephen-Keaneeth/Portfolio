@@ -73,12 +73,13 @@ function showFallbackBackground(canvas) {
     inset: 0;
     z-index: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 20% 30%, hsla(172, 85%, 44%, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 80% 70%, hsla(185, 80%, 40%, 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 55% at 15% 25%, hsla(172, 85%, 44%, 0.10) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 45% at 85% 75%, hsla(185, 80%, 40%, 0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 60% 10%, hsla(172, 70%, 35%, 0.04) 0%, transparent 70%),
       hsl(0, 0%, 5%);
   `;
   canvas.replaceWith(fallback);
-  console.info('[hero-scene] WebGL skipped — using CSS fallback gradient.');
+  console.info('[hero-scene] WebGL scene disabled — using static CSS gradient.');
 }
 
 /* ─────────────────────────────────────────────────
@@ -275,12 +276,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas || canvas.tagName !== 'CANVAS') return;
 
-  const { load, reason } = assessDeviceCapability();
-  console.info(`[hero-scene] Capability check: load=${load}, reason=${reason}`);
-
-  if (!load) {
-    showFallbackBackground(canvas);
-  } else {
-    initThreeScene(canvas);
-  }
+  // Wavy particle animation disabled — always use the clean static gradient.
+  // This keeps the hero background atmospheric without any motion distraction.
+  showFallbackBackground(canvas);
 });
+

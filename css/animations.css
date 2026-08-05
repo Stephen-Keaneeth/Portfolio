@@ -240,57 +240,33 @@
 }
 
 /* ── 11. Custom Cursor ────────────────────── */
-/* The actual cursor DOM elements are injected by animations.js.
-   These are the CSS rules for them. */
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: var(--z-cursor);
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, opacity 0.2s, width 0.2s, height 0.2s;
-  mix-blend-mode: normal;
-}
-
+/* Arrow pointer cursor using a teal-tinted SVG — matches site accent.
+   The dot/ring approach is replaced with a clean pointer shape.
+   cursor-dot and cursor-ring elements injected by JS are hidden. */
+.cursor-dot,
 .cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1px solid hsla(172, 85%, 44%, 0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: var(--z-cursor);
-  transform: translate(-50%, -50%);
-  /* The ring lags behind — JS lerps it */
-  transition: width 0.3s, height 0.3s, border-color 0.3s, opacity 0.2s;
+  display: none !important;
 }
 
-/* Ring state when hovering a link */
-body.cursor-hover .cursor-ring {
-  width: 56px; height: 56px;
-  border-color: var(--accent);
-}
-body.cursor-hover .cursor-dot {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0);
-}
-
-/* Ring state when hovering a button */
-body.cursor-btn .cursor-ring {
-  width: 48px; height: 48px;
-  background: var(--accent-glow);
-  border-color: var(--accent);
-}
-
-/* Hide default cursor on desktop — JS re-adds it if WebGL fails */
+/* Custom arrow pointer — teal outline with dark fill, on-brand */
 @media (hover: hover) and (pointer: fine) {
-  * { cursor: none !important; }
+  * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M5 3l14 9-7 1-4 7z' fill='%230a0a0a' stroke='%230fc8a8' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 5 3, auto !important;
+  }
+
+  /* Pointer hand on links and buttons */
+  a, button, [role="button"], [role="link"], .btn, label[for], select {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'%3E%3Cpath d='M8 1v16l3-3 2 6 2-1-2-6h4z' fill='%230a0a0a' stroke='%230fc8a8' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 8 1, pointer !important;
+  }
+
+  /* Text cursor on text inputs */
+  input[type='text'], input[type='email'], input[type='search'],
+  input[type='password'], textarea {
+    cursor: text !important;
+  }
 }
 
-/* Mobile / touch — cursor is irrelevant, restore default */
+/* Mobile / touch — restore default */
 @media (hover: none) {
   .cursor-dot, .cursor-ring { display: none; }
   * { cursor: auto !important; }

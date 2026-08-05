@@ -15,6 +15,11 @@
           "label": "Comfortable"
         },
         {
+          "name": "JAVA",
+          "level": 50,
+          "label": "Learning"
+        },
+        {
           "name": "JavaScript",
           "level": 40,
           "label": "Learning"
@@ -83,7 +88,7 @@
         },
         {
           "name": "Linux (Ubuntu)",
-          "level": 60,
+          "level": 40,
           "label": "Learning"
         },
         {

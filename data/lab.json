@@ -1,17 +1,48 @@
 [
   {
-    "id": "subnetting-lab",
-    "title": "IP Subnetting Practice Lab",
-    "type": "Cybersecurity Lab",
-    "emoji": "🌐",
-    "description": "Hands-on exercises working through Class C subnetting, CIDR notation, wildcard masks, and designing subnets for a small office network. All done in Packet Tracer.",
+    "id": "netflix-movies-datacamp",
+    "title": "Netflix Movies",
+    "type": "Project",
+    "emoji": "📺",
+    "description": "Investigating Netflix Movies",
     "tools": [
-      "Cisco Packet Tracer",
-      "CIDR",
-      "Networking"
+      "Python",
+      "Data Analysis",
+      "NumPy",
+      "Pandas"
     ],
     "status": "Completed",
-    "link": "",
-    "date": "2026-03"
+    "link": "/assets/projects/Project_InvestigatingNetflixMovies.pdf"
+  },
+  {
+    "id": "nyc-public-school-test-result-scores-datacamp",
+    "title": "NYC Public School Test Result Scores",
+    "type": "Project",
+    "emoji": "📊",
+    "description": "NYC Public School Test Result Scores",
+    "tools": [
+      "Python",
+      "Data Analysis",
+      "NumPy",
+      "Pandas",
+      "Matplotlib"
+    ],
+    "status": "Completed",
+    "link": "/assets/projects/Project_ExploringNYCPublicSchoolTestResultScores.pdf"
+  },
+  {
+    "id": "tv-data-insights-datacamp",
+    "title": "Extracting TV Data Insights",
+    "type": "Project",
+    "emoji": "📺",
+    "description": "Extracting TV Data Insights",
+    "tools": [
+      "Python",
+      "Data Analysis",
+      "NumPy",
+      "Pandas"
+    ],
+    "status": "Completed",
+    "link": "/assets/projects/Project_ExtractingTVDataInsights.pdf"
   }
 ]

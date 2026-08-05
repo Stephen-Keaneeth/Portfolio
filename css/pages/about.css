@@ -7,9 +7,9 @@
 
 .about-hero__inner {
   display: grid;
-  grid-template-columns: 1fr 260px;
-  gap: var(--space-16);
-  align-items: center;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-12);
+  align-items: start;
 }
 
 .about-hero__bio {
@@ -43,17 +43,106 @@
   z-index: -1;
 }
 
-/* Avatar placeholder when no photo is provided */
+/* Avatar placeholder — terminal identity block */
 .about-hero__avatar {
   width: 100%;
-  aspect-ratio: 1;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, hsl(172, 20%, 8%), var(--bg-primary));
+  background: hsl(0, 0%, 6%);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 4rem;
+  overflow: hidden;
+}
+
+/* Terminal window styles */
+.about-hero__terminal {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-size: 1rem; /* reset */
+}
+
+.terminal__topbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px var(--space-3);
+  background: hsl(0, 0%, 9%);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.terminal__dot--red    { background: hsl(4,  80%, 52%); }
+.terminal__dot--yellow { background: hsl(40, 85%, 52%); }
+.terminal__dot--green  { background: hsl(130, 60%, 42%); }
+
+.terminal__title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.04em;
+}
+
+.terminal__body {
+  padding: var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.terminal__line {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.65;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.terminal__line--dim {
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-size: 0.65rem;
+}
+
+.terminal__cmd {
+  color: hsl(172, 70%, 55%);
+}
+
+.terminal__prompt {
+  color: var(--accent);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+
+.terminal__output {
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+}
+
+/* Blinking block cursor */
+.terminal__cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--accent);
+  opacity: 0.85;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
 }
 
 .about-hero__resume-link {
