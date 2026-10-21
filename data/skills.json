@@ -16,8 +16,8 @@
         },
         {
           "name": "JAVA",
-          "level": 50,
-          "label": "Learning"
+          "level": 70,
+          "label": "Comfortable"
         },
         {
           "name": "JavaScript",
@@ -31,8 +31,8 @@
         },
         {
           "name": "SQL",
-          "level": 45,
-          "label": "Learning"
+          "level": 70,
+          "label": "Comfortable"
         }
       ]
     },
@@ -119,8 +119,8 @@
         },
         {
           "name": "Object-Oriented Programming",
-          "level": 45,
-          "label": "Learning"
+          "level": 60,
+          "label": "Comfortable"
         }
       ]
     }

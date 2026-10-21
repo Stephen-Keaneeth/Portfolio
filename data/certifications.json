@@ -32,6 +32,23 @@
     ]
   },
   {
+    "id": "NPTEL-DBMS",
+    "title": "DataBase Management System - NPTEL",
+    "issuer": "NPTEL",
+    "issuerEmoji": "🎓",
+    "date": "2026-07",
+    "status": "Completed",
+    "description": "DataBase Management System course.",
+    "link": "/assets/certs/dbms_NPTEL.pdf",
+    "skills": [
+      "DataBase Management System",
+      "SQL",
+      "MySQL",
+      "Data Modeling",
+      "Database Design"
+    ]
+  },
+  {
     "id": "NPTEL-PythonForDS",
     "title": "Python for Data Science",
     "issuer": "NPTEL",
