@@ -49,6 +49,22 @@
     ]
   },
   {
+    "id": "NPTEL-JAVA",
+    "title": "Programming in Java - NPTEL",
+    "issuer": "NPTEL",
+    "issuerEmoji": "🎓",
+    "date": "2026-011",
+    "status": "Completed",
+    "description": "",
+    "link": "/assets/certs/NPTEL_Java_HallTicket.java",
+    "skills": [
+      "Java Language",
+      "Object Oriented Programming",
+      "Multi Threading",
+      "GUI"
+    ]
+  },
+  {
     "id": "NPTEL-PythonForDS",
     "title": "Python for Data Science",
     "issuer": "NPTEL",
